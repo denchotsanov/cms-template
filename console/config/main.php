@@ -13,15 +13,36 @@ return [
     'controllerNamespace' => 'console\controllers',
     'aliases' => [
         '@bower' => '@vendor/bower-asset',
-        '@npm'   => '@vendor/npm-asset',
+        '@npm' => '@vendor/npm-asset',
     ],
     'controllerMap' => [
         'fixture' => [
             'class' => 'yii\console\controllers\FixtureController',
             'namespace' => 'common\fixtures',
-          ],
+        ],
+        'migrate' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => 'console\migrations', // disable non-namespaced migrations if app\migrations is listed below
+        ],
+
+        'migrate-rbac' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => '@yii/rbac/migrations',
+            'migrationTable' => 'migration_rbac',
+        ],
+        'migrate-log' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => '@yii/log/migrations',
+            'migrationTable' => 'migration_log',
+        ],
+        'migrate-i18n' => [
+            'class' => 'yii\console\controllers\MigrateController',
+            'migrationPath' => '@yii/i18n/migrations',
+            'migrationTable' => 'migration_i18n',
+        ],
     ],
     'components' => [
+
         'log' => [
             'targets' => [
                 [
