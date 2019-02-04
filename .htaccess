@@ -7,6 +7,7 @@ RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
 
 RewriteCond %{REQUEST_URI} ^/admin/$
 RewriteRule ^(admin)/$ /$1 [R=301,L]
+
 RewriteCond %{REQUEST_URI} ^/admin
 RewriteRule ^admin(/.+)?$ /backend/web/$1 [L,PT]
 

@@ -10,7 +10,8 @@
         "php": ">=7.2.0",
         "yiisoft/yii2": "~2.0.14",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "fxp/composer-asset-plugin": "^1.4",
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.0.0",
@@ -20,10 +21,37 @@
         "phpunit/phpunit": "~6.5.5",
         "codeception/verify": "~1.0.0"
     },
-    "config": {
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ],
+        "post-install-cmd": [
+
+        ],
+        "post-update-cmd": [
+
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master-dev"
+        },
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "web/uploads": "0777",
+                    "yii": "0755"
+                }
+            ]
+        }
+    },
+    "config":{
         "process-timeout": 1800,
-        "fxp-asset": {
-            "enabled": false
+        "fxp-asset.installer-paths":{
+            "npm-asset-library": "node_modules",
+            "bower-asset-library": "vendor/bower-asset"
         }
     },
     "repositories": [
