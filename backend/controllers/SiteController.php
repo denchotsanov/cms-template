@@ -1,6 +1,7 @@
 <?php
 namespace backend\controllers;
 
+use backend\models\SignupForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -19,10 +20,10 @@ class SiteController extends Controller
     {
         return [
             'access' => [
-                'class' => AccessControl::className(),
+                'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error','signup'],
                         'allow' => true,
                     ],
                     [
@@ -33,7 +34,7 @@ class SiteController extends Controller
                 ],
             ],
             'verbs' => [
-                'class' => VerbFilter::className(),
+                'class' => VerbFilter::class,
                 'actions' => [
                     'logout' => ['post'],
                 ],
@@ -87,6 +88,26 @@ class SiteController extends Controller
         }
     }
 
+    public function actionSignup()
+    {
+        $this->layout = 'login';
+        if (!Yii::$app->user->isGuest) {
+            return $this->goHome();
+        }
+
+        $model = new SignupForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->signup()) {
+                if (Yii::$app->getUser()->login($user)) {
+                    return $this->goHome();
+                }
+            }
+        }
+
+        return $this->render('signup', [
+            'model' => $model,
+        ]);
+    }
     /**
      * Logout action.
      *
