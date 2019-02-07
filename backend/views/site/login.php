@@ -22,11 +22,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <div class="login-box">
     <div class="login-logo">
-        <a href="#"><b>Admin</b>LTE</a>
+        <a href="#"><b>AD</b>min</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Login to continue</p>
 
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
         <?= $form->field($model, 'username',$fieldOptions1)->textInput(['autofocus' => true,'placeholder' => $model->getAttributeLabel('username')])->label(false)?>
