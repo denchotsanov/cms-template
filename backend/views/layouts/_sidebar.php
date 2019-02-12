@@ -20,7 +20,7 @@ $menuItems = [
         'items' => [
             [
                 'label' => 'Role',
-                'url' => 'role/index',
+                'url' => ['rbac/index'],
                 'icon' => 'fa-link',
             ],
         ]
