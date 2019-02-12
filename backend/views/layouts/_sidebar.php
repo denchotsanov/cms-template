@@ -10,6 +10,7 @@
 /* @var $this \yii\web\View */
 
 use denchotsanov\widgets\Menu;
+use yii\helpers\ArrayHelper;
 
 $menuItems = [
     [
@@ -20,7 +21,7 @@ $menuItems = [
         'items' => [
             [
                 'label' => 'Role',
-                'url' => ['rbac/index'],
+                'url' => ['rbac/'],
                 'icon' => 'fa-link',
             ],
         ]
@@ -32,17 +33,19 @@ $menuItems = [
         'icon' => 'fa-sign-out'],
     [
         'label' => 'Menu Yii2',
-        'options' => ['class' => 'header']],
+        'options' => ['class' => 'header'],
+        'visible' => YII_ENV_DEV,
+    ],
     [
         'label' => 'Gii',
         'url' => ['/gii'],
         'icon' => 'fa-gavel',
-        'visable' => YII_ENV_DEV,
+        'visible' => YII_ENV_DEV,
         'pjax' => true],
     [
         'label' => 'Debug',
         'url' => ['/debug'],
-        'visable' => YII_ENV_DEV,
+        'visible' => YII_ENV_DEV,
         'icon' => 'fa-bug'],
 ];
 
