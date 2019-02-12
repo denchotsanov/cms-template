@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         <p class="login-box-msg">Login to continue</p>
         <?php $form = ActiveForm::begin(['id' => 'login-form', 'enableClientValidation' => false]); ?>
         <?php echo $form->field($model, 'email',$fieldOptions1)->textInput(['autofocus' => true,'placeholder' => $model->getAttributeLabel('username')])->label(false)?>
-        <?php echo $form->field($model, 'password',$fieldOptions2)->passwordInput(['placeholder' => $model->getAttributeLabel('password')]) ?>
+        <?php echo $form->field($model, 'password',$fieldOptions2)->passwordInput(['placeholder' => $model->getAttributeLabel('password')])->label(false) ?>
        <div class="row">
             <div class="col-xs-8">
                 <?php echo $form->field($model, 'rememberMe')->checkbox() ?>
