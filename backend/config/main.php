@@ -13,6 +13,7 @@ $params = array_merge(
 
 return [
     'id' => 'app-admin',
+    'version'=>'2.0.0',
     'name'=> 'ADmin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
