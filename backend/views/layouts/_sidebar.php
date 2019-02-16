@@ -10,19 +10,18 @@
 /* @var $this \yii\web\View */
 
 use denchotsanov\widgets\Menu;
-use yii\helpers\ArrayHelper;
 
 $menuItems = [
     [
         'label' => 'Users',
         'url' => ['user/index'],
-        'icon' => 'fa-user',
+        'icon' => 'user',
         'pjax' => true,
         'items' => [
             [
                 'label' => 'Role',
                 'url' => ['rbac/'],
-                'icon' => 'fa-link',
+                'icon' => 'link',
             ],
         ]
     ],
@@ -30,7 +29,7 @@ $menuItems = [
         'label' => 'Sing out',
         'url' => ['site/logout'],
         'visible' => !Yii::$app->user->isGuest,
-        'icon' => 'fa-sign-out'],
+        'icon' => 'sign-out'],
     [
         'label' => 'Menu Yii2',
         'options' => ['class' => 'header'],
@@ -39,14 +38,14 @@ $menuItems = [
     [
         'label' => 'Gii',
         'url' => ['/gii'],
-        'icon' => 'fa-gavel',
+        'icon' => 'gavel',
         'visible' => YII_ENV_DEV,
         'pjax' => true],
     [
         'label' => 'Debug',
         'url' => ['/debug'],
         'visible' => YII_ENV_DEV,
-        'icon' => 'fa-bug'],
+        'icon' => 'bug'],
 ];
 
 ?>
