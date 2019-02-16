@@ -14,20 +14,20 @@ use denchotsanov\widgets\Menu;
 $menuItems = [
     [
         'label' => 'Users',
-        'url' => ['user/index'],
+        'url' => ['/user'],
         'icon' => 'user',
         'pjax' => true,
         'items' => [
             [
                 'label' => 'Role',
-                'url' => ['rbac/'],
+                'url' => ['/rbac'],
                 'icon' => 'link',
             ],
         ]
     ],
     [
         'label' => 'Sing out',
-        'url' => ['site/logout'],
+        'url' => ['/logout'],
         'visible' => !Yii::$app->user->isGuest,
         'icon' => 'sign-out'],
     [
