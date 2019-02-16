@@ -51,8 +51,8 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-                'layout' => 'login'
-            ],
+                'layout' => Yii::$app->user->isGuest ? 'login':'main',
+                ],
         ];
     }
 
