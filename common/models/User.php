@@ -42,10 +42,20 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      */
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
-            TimestampBehavior::class,
+            'timestamp' => [
+                'class' => TimestampBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                'value' => time(),
+            ],
         ];
     }
 
@@ -203,5 +213,38 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     * @return array
+     */
+    public function getStatusList()
+    {
+        return [
+            self::STATUS_DELETED => 'Denied',
+            self::STATUS_PENDING => 'Pending',
+            self::STATUS_BANED =>'Banned',
+            self::STATUS_LOCKED =>'Locked',
+            self::STATUS_PASSWORD_RECOVER =>'Password Recovery',
+            self::STATUS_ACTIVE => 'Active',
+        ];
+    }
+    public function getHtmlStatusList()
+    {
+        return [
+            self::STATUS_DELETED => '<span class="label label-danger">Denied</span>',
+            self::STATUS_PENDING => '<span class="label label-warning">Pending</span>',
+            self::STATUS_BANED =>'<span class="label label-warning">Banned</span>',
+            self::STATUS_LOCKED =>'<span class="label label-warning">Locked</span>',
+            self::STATUS_PASSWORD_RECOVER =>'<span class="label label-warning">Password Recovery</span>',
+            self::STATUS_ACTIVE => '<span class="label label-success">Active</span>',
+        ];
+    }
+
+    public function getStatusLabel(){
+        return $this->statusList[$this->status];
+    }
+    public function getHtmlStatusLabel(){
+        return $this->htmlStatusList[$this->status];
     }
 }
