@@ -7,13 +7,15 @@
  */
 
 use denchotsanov\assets\AdminAsset;
+use backend\assets\AppAsset;
 use yii\helpers\Html;
 
 AdminAsset::register($this);
+AppAsset::register($this);
 
 $this->beginPage() ?>
     <!DOCTYPE html>
-    <html lang="<?= Yii::$app->language ?>">
+    <html lang="<?= Yii::$app->language ?>" ng-app="app">
     <head>
         <meta charset="<?= Yii::$app->charset ?>"/>
         <meta name="viewport" content="width=device-width, initial-scale=1">
