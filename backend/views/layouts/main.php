@@ -11,7 +11,6 @@ use backend\assets\AppAsset;
 
 AppAsset::register($this);
 AdminAsset::register($this);
-
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
@@ -24,7 +23,10 @@ AdminAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="hold-transition skin-blue sidebar-mini">
+<body class="hold-transition skin-blue sidebar-mini" ng-controller="MainController">
+<script>
+    window.user = <?php echo Yii::$app->user->identity->getUserInfo(true); ?>;
+</script>
 <?php $this->beginBody() ?>
 
 <div class="wrap">
