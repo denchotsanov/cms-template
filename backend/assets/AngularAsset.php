@@ -18,7 +18,6 @@ class AngularAsset extends AssetBundle
     public $js = [
         'angular/angular.js',
         'angular-route/angular-route.js',
-        'angular-strap/dist/angular-strap.js',
     ];
     public $jsOptions = [
         'position' => View::POS_HEAD,
