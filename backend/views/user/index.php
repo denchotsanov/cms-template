@@ -18,10 +18,6 @@ $this->params['breadcrumbs'][] = $this->title;
         <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
     </div>
     <div class="box-body table-responsive no-padding">
-        <?php // echo $this->render('_search', ['model' => $searchModel]);
-
-        ?>
-
         <?= GridView::widget([
             'dataProvider' => $dataProvider,
             'filterModel' => $searchModel,
@@ -33,9 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
                     'filter' => true,
                     'format' => 'raw',
                     'value' => function ($model) {
-                       //if(!$model->userProfile)
+//                       if(!$model->userProfile)
                             return $model->username;
-                        //return $model->username.' ( '.$model->userProfile->fullname.' )';
+//                        return $model->username.' ( '.$model->userProfile->fullname.' )';
                     },
                 ],
                 'email:email',
@@ -49,7 +45,8 @@ $this->params['breadcrumbs'][] = $this->title;
                 ],
                 'created_at:date',
                 'updated_at:date',
-                ['class' => 'yii\grid\ActionColumn'],
+                ['class' => 'yii\grid\ActionColumn',
+                'template' => '{update}{delete}'],
             ],
         ]); ?>
     </div>
