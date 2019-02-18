@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b4ceedb146bcd22590a0f1fa2d9dbd51",
+    "content-hash": "b2239ceb34408966e7856f0f0ba5fec9",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -109,17 +109,58 @@
             "time": "2018-07-15T18:58:18+00:00"
         },
         {
-            "name": "bower-asset/bootstrap",
-            "version": "v3.4.0",
+            "name": "bower-asset/angular",
+            "version": "v1.7.7",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
-                "reference": "4c547f2175b9a05aa43551f6927da83fe249ce42"
+                "url": "https://github.com/angular/bower-angular.git",
+                "reference": "b333e148cf509428fd54f53c41710c4e8cf1ac2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/4c547f2175b9a05aa43551f6927da83fe249ce42",
-                "reference": "4c547f2175b9a05aa43551f6927da83fe249ce42",
+                "url": "https://api.github.com/repos/angular/bower-angular/zipball/b333e148cf509428fd54f53c41710c4e8cf1ac2b",
+                "reference": "b333e148cf509428fd54f53c41710c4e8cf1ac2b",
+                "shasum": null
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-route",
+            "version": "v1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-route.git",
+                "reference": "17d9dbd16548586134f62fea943c62c6a50785b3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-route/zipball/17d9dbd16548586134f62fea943c62c6a50785b3",
+                "reference": "17d9dbd16548586134f62fea943c62c6a50785b3",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.7.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/bootstrap",
+            "version": "v3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/twbs/bootstrap.git",
+                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/twbs/bootstrap/zipball/68b0d231a13201eb14acd3dc84e51543d16e5f7e",
+                "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e",
                 "shasum": null
             },
             "require": {
@@ -1128,17 +1169,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-bootstrap.git",
-                "reference": "5ad34490ba50107131ea7259d8f1c51028cedeb4"
+                "reference": "454552b7a90e2a803def733e4d1f612b850158da"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/5ad34490ba50107131ea7259d8f1c51028cedeb4",
-                "reference": "5ad34490ba50107131ea7259d8f1c51028cedeb4",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/454552b7a90e2a803def733e4d1f612b850158da",
+                "reference": "454552b7a90e2a803def733e4d1f612b850158da",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*",
                 "yiisoft/yii2": "~2.0.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<7"
             },
             "type": "yii2-extension",
             "extra": {
@@ -1180,7 +1224,7 @@
                 "bootstrap",
                 "yii2"
             ],
-            "time": "2019-01-29T21:40:10+00:00"
+            "time": "2019-02-17T13:23:56+00:00"
         },
         {
             "name": "yiisoft/yii2-composer",
@@ -1188,19 +1232,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-composer.git",
-                "reference": "f4cb50d40ed34fc6f6b100d1a515dbdbc65e40ac"
+                "reference": "2caf2e7c6127085315d43d5034326f7bdf83b6a6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/f4cb50d40ed34fc6f6b100d1a515dbdbc65e40ac",
-                "reference": "f4cb50d40ed34fc6f6b100d1a515dbdbc65e40ac",
+                "url": "https://api.github.com/repos/yiisoft/yii2-composer/zipball/2caf2e7c6127085315d43d5034326f7bdf83b6a6",
+                "reference": "2caf2e7c6127085315d43d5034326f7bdf83b6a6",
                 "shasum": ""
             },
             "require": {
                 "composer-plugin-api": "^1.0"
             },
             "require-dev": {
-                "composer/composer": "^1.0"
+                "composer/composer": "^1.0",
+                "phpunit/phpunit": "<7"
             },
             "type": "composer-plugin",
             "extra": {
@@ -1234,7 +1279,7 @@
                 "extension installer",
                 "yii2"
             ],
-            "time": "2018-08-25T10:44:34+00:00"
+            "time": "2019-02-18T10:24:42+00:00"
         },
         {
             "name": "yiisoft/yii2-jui",
@@ -1300,17 +1345,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-swiftmailer.git",
-                "reference": "a9544a93c7851330f53013bc6abdc5e748fd91c5"
+                "reference": "da440aba4d518a9ffa08c2d18a657a54a28919c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/a9544a93c7851330f53013bc6abdc5e748fd91c5",
-                "reference": "a9544a93c7851330f53013bc6abdc5e748fd91c5",
+                "url": "https://api.github.com/repos/yiisoft/yii2-swiftmailer/zipball/da440aba4d518a9ffa08c2d18a657a54a28919c9",
+                "reference": "da440aba4d518a9ffa08c2d18a657a54a28919c9",
                 "shasum": ""
             },
             "require": {
                 "swiftmailer/swiftmailer": "~6.0",
                 "yiisoft/yii2": ">=2.0.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<7"
             },
             "type": "yii2-extension",
             "extra": {
@@ -1342,7 +1390,7 @@
                 "swiftmailer",
                 "yii2"
             ],
-            "time": "2018-09-23T22:01:14+00:00"
+            "time": "2019-02-17T15:30:12+00:00"
         }
     ],
     "packages-dev": [
@@ -1390,12 +1438,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/var-dumper.git",
-                "reference": "2ee4db500c1e709da0a54a49b3da0e9653912b42"
+                "reference": "9f78cd7722ae939e7fd719ff1396dd0415d06f4c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/2ee4db500c1e709da0a54a49b3da0e9653912b42",
-                "reference": "2ee4db500c1e709da0a54a49b3da0e9653912b42",
+                "url": "https://api.github.com/repos/symfony/var-dumper/zipball/9f78cd7722ae939e7fd719ff1396dd0415d06f4c",
+                "reference": "9f78cd7722ae939e7fd719ff1396dd0415d06f4c",
                 "shasum": ""
             },
             "require": {
@@ -1458,7 +1506,7 @@
                 "debug",
                 "dump"
             ],
-            "time": "2019-01-30T11:44:59+00:00"
+            "time": "2019-02-07T18:43:24+00:00"
         },
         {
             "name": "yiisoft/yii2-debug",
@@ -1466,12 +1514,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "889f8e063ce8461ff49afd5b9c9464fcba632c19"
+                "reference": "87f0c608b69f1c2a337a8e911ac71822dcb552ef"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/889f8e063ce8461ff49afd5b9c9464fcba632c19",
-                "reference": "889f8e063ce8461ff49afd5b9c9464fcba632c19",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/87f0c608b69f1c2a337a8e911ac71822dcb552ef",
+                "reference": "87f0c608b69f1c2a337a8e911ac71822dcb552ef",
                 "shasum": ""
             },
             "require": {
@@ -1515,7 +1563,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2019-02-04T09:11:13+00:00"
+            "time": "2019-02-18T10:22:45+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",
@@ -1523,12 +1571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-gii.git",
-                "reference": "bfe6044f7ee8089923c0bbfda7394a94925c4b0e"
+                "reference": "f5460054d396f4d8e1e0e96f569f0e04d0b758c4"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/bfe6044f7ee8089923c0bbfda7394a94925c4b0e",
-                "reference": "bfe6044f7ee8089923c0bbfda7394a94925c4b0e",
+                "url": "https://api.github.com/repos/yiisoft/yii2-gii/zipball/f5460054d396f4d8e1e0e96f569f0e04d0b758c4",
+                "reference": "f5460054d396f4d8e1e0e96f569f0e04d0b758c4",
                 "shasum": ""
             },
             "require": {
@@ -1566,7 +1614,7 @@
                 "gii",
                 "yii2"
             ],
-            "time": "2019-02-02T20:01:31+00:00"
+            "time": "2019-02-18T13:11:37+00:00"
         }
     ],
     "aliases": [],
