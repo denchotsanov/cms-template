@@ -2,10 +2,12 @@
 namespace common\models;
 
 use Yii;
+use yii\base\Model;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\Response;
 
 /**
  * User model
@@ -247,5 +249,37 @@ class User extends ActiveRecord implements IdentityInterface
     }
     public function getHtmlStatusLabel(){
         return $this->htmlStatusList[$this->status];
+    }
+
+    public function getUserInfo($isJson=false){
+        $model = [
+            'id' =>$this->id,
+            'username' => $this->email,
+            'fullname' => $this->email,
+            'avatar' => $this->getUserAvatarUrl(),
+            'created' => date('M. Y',$this->created_at),
+        ];
+
+        if($isJson){
+            return json_encode($model,true);
+        }
+        return $model;
+
+    }
+
+    public function getUserAvatarUrl(){
+
+//@todo: да го добавя при релация с профилна таблица
+//        if(strpos($this->avatar,'http')!== false){
+//            return $this->avatar;
+//        }
+//        if($this->crop_avatar){
+//            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->crop_avatar;
+//        }
+//        if($this->avatar){
+//            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->avatar;
+//        }
+
+        return Yii::$app->request->baseUrl .'/img/avatar5.png';
     }
 }
