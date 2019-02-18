@@ -14,10 +14,13 @@ use denchotsanov\widgets\Menu;
 $menuItems = [
     [
         'label' => 'Users',
-        'url' => ['/user'],
         'icon' => 'user',
-        'pjax' => true,
         'items' => [
+            [
+                'label' => 'Users',
+                'url' => ['/user'],
+                'icon' => 'user',
+            ],
             [
                 'label' => 'Role',
                 'url' => ['/rbac'],
@@ -55,7 +58,7 @@ $menuItems = [
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="{{user.userAvatarUrl}}" class="img-circle" alt="User Image"/>
+                <img src="{{user.avatar}}" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
                 <p>{{user.username}}</p>
