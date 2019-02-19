@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "b2239ceb34408966e7856f0f0ba5fec9",
+    "content-hash": "6a13a860c2aca35b97d2c789abdcac08",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -128,6 +128,28 @@
             ]
         },
         {
+            "name": "bower-asset/angular-animate",
+            "version": "v1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-animate.git",
+                "reference": "ae1fb035644fa6dc3edf5e1ce284d9fe8b5de29b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-animate/zipball/ae1fb035644fa6dc3edf5e1ce284d9fe8b5de29b",
+                "reference": "ae1fb035644fa6dc3edf5e1ce284d9fe8b5de29b",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.7.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
             "name": "bower-asset/angular-route",
             "version": "v1.7.7",
             "source": {
@@ -139,6 +161,50 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/angular/bower-angular-route/zipball/17d9dbd16548586134f62fea943c62c6a50785b3",
                 "reference": "17d9dbd16548586134f62fea943c62c6a50785b3",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.7.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-sanitize",
+            "version": "v1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-sanitize.git",
+                "reference": "a7398265ce3bd131c62cb7758d95cf792f3291ac"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-sanitize/zipball/a7398265ce3bd131c62cb7758d95cf792f3291ac",
+                "reference": "a7398265ce3bd131c62cb7758d95cf792f3291ac",
+                "shasum": null
+            },
+            "require": {
+                "bower-asset/angular": "1.7.7"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-touch",
+            "version": "v1.7.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/angular/bower-angular-touch.git",
+                "reference": "c3db34cab5c3b37d18b9868e73ca8e31e9db32f6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-touch/zipball/c3db34cab5c3b37d18b9868e73ca8e31e9db32f6",
+                "reference": "c3db34cab5c3b37d18b9868e73ca8e31e9db32f6",
                 "shasum": null
             },
             "require": {
@@ -1287,17 +1353,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-jui.git",
-                "reference": "8195a03e1a0bf64fe1df20b8993b6c7bad0e1b10"
+                "reference": "49d2f37852f5b9ce6cf43b2467c77bdb6710c340"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/8195a03e1a0bf64fe1df20b8993b6c7bad0e1b10",
-                "reference": "8195a03e1a0bf64fe1df20b8993b6c7bad0e1b10",
+                "url": "https://api.github.com/repos/yiisoft/yii2-jui/zipball/49d2f37852f5b9ce6cf43b2467c77bdb6710c340",
+                "reference": "49d2f37852f5b9ce6cf43b2467c77bdb6710c340",
                 "shasum": ""
             },
             "require": {
                 "bower-asset/jquery-ui": "~1.12.1",
                 "yiisoft/yii2": "~2.0.4"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<7"
             },
             "type": "yii2-extension",
             "extra": {
@@ -1337,7 +1406,7 @@
                 "jQuery UI",
                 "yii2"
             ],
-            "time": "2018-09-18T13:26:35+00:00"
+            "time": "2019-02-18T21:12:42+00:00"
         },
         {
             "name": "yiisoft/yii2-swiftmailer",
