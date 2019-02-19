@@ -18,6 +18,10 @@ class AngularAsset extends AssetBundle
     public $js = [
         'angular/angular.js',
         'angular-route/angular-route.js',
+        'angular-animate/angular-animate.js',
+        'angular-touch/angular-touch.js',
+        'angular-sanitize/angular-sanitize.js',
+
     ];
     public $jsOptions = [
         'position' => View::POS_HEAD,
