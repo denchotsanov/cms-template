@@ -8,9 +8,11 @@ use denchotsanov\assets\AdminAsset;
 use yii\helpers\Html;
 
 use backend\assets\AppAsset;
+use backend\assets\AngularUIAsset;
 
 AppAsset::register($this);
 AdminAsset::register($this);
+AngularUIAsset::register($this);
 ?>
 <?php $this->beginPage() ?>
 <!DOCTYPE html>
