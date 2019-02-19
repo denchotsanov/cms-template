@@ -1,19 +1,18 @@
-controllers.controller('UsersController', ['$scope','$http', '$location', '$window',
-    function ($scope, $http, $location, $window,$uibModal) {
-
-
+controllers.controller('UsersController', ['$scope','$http', '$location', '$window','$uibModal',
+    function ($scope, $http, $location, $window, $uibModal) {
         $scope.openModal = function () {
-            var modalInstance = $uibModal.open({
+            console.log($uibModal);
+
+                var modalInstance = $uibModal.open({
                 animation: true,
                 ariaLabelledBy: 'modal-title',
                 ariaDescribedBy: 'modal-body',
-                templateUrl: 'myModalContent.html',
-                controller: 'ModalInstanceCtrl',
-                controllerAs: 'pc',
-                size: size,
+                //templateUrl: 'myModalContent.html',
+                //controller: 'ModalInstanceCtrl',
+                // size: size,
                 resolve: {
                     data: function () {
-                        return pc.data;
+                        return ''
                     }
                 }
             });

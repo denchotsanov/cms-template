@@ -3,20 +3,21 @@
 var app = angular.module('app', [
     'ngRoute',          //$routeProvider
     'controllers'       //Our module frontend/web/js/controllers.js
-]);
 
-app.config(['$routeProvider', '$httpProvider',
-    function($routeProvider, $httpProvider) {
-        $routeProvider.
-        when('/', {
-            templateUrl: 'partials/index.html'
-        }).
-        otherwise({
-            templateUrl: 'partials/404.html'
-        });
-        //$httpProvider.interceptors.push('authInterceptor');
-    }
 ]);
+//
+// app.config(['$routeProvider', '$httpProvider',
+//     function($routeProvider, $httpProvider) {
+//         $routeProvider.
+//         when('/', {
+//             templateUrl: 'partials/index.html'
+//         }).
+//         otherwise({
+//             templateUrl: 'partials/404.html'
+//         });
+//         //$httpProvider.interceptors.push('authInterceptor');
+//     }
+// ]);
 
 // app.factory('authInterceptor', function ($q, $window, $location) {
 //     return {
