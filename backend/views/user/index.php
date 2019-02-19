@@ -1,7 +1,6 @@
 <?php
 
 use common\models\User;
-use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
@@ -12,10 +11,11 @@ use yii\widgets\Pjax;
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index box box-primary">
+<div class="user-index box box-primary" ng-controller="UsersController">
     <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-        <?= Html::a('Create User', ['create'], ['class' => 'btn btn-success btn-flat']) ?>
+        <a href="#" class="btn btn-success btn-flat" ng-click="openModal()">Create user</a>
+
     </div>
     <div class="box-body table-responsive no-padding">
         <?= GridView::widget([
@@ -52,3 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <?php Pjax::end(); ?>
 </div>
+<modal id="user-modal">
+
+</modal>
