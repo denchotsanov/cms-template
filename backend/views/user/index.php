@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-index box box-primary" ng-controller="UsersController">
     <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-        <a href="#" class="btn btn-success btn-flat" ng-click="openModal()">Create user</a>
+        <a href="#" class="btn btn-success btn-flat" ng-click="$ctrl.open()">Create user</a>
 
     </div>
     <div class="box-body table-responsive no-padding">

@@ -74,6 +74,50 @@ almond@~0.3.1:
   resolved "https://registry.yarnpkg.com/almond/-/almond-0.3.3.tgz#a0e7c95ac7624d6417b4494b1e68bff693168a20"
   integrity sha1-oOfJWsdiTWQXtElLHmi/9pMWiiA=
 
+angular-animate@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-animate/-/angular-animate-1.7.7.tgz#5422909094a41cd7404937d8a8a960f30c4d9364"
+  integrity sha512-KLbU9gtgCyNSaMZKnNe9Yi6UTlDMN2EWyokQ06TG5fbDWOePm+kv2xqeUg1S2h+ZLjK0NnoVDIvwDhVQ+AWAag==
+
+angular-aria@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-aria/-/angular-aria-1.7.7.tgz#f7d16f18fdd5ce1140213ef8e61ca813fa686827"
+  integrity sha512-Jju0VudfKVp+6FUtfzpDBuOJE8+8cGPSM10nRicXvJRX/Nx/YOu38f2aL3HQwThrRK+3E5jfo7yRwVNYoSmSxg==
+
+angular-material@^1.1.12:
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/angular-material/-/angular-material-1.1.12.tgz#e942413ed1dc160190834b2e8c1153263e8711d1"
+  integrity sha512-hvYgVSAxmXy+ozm+FcdGrTrBKm/TLubCgJ8xZR3LNYYmLfsIfzh4Eyk87inmTCXS02KYL0EX2dUeiVmanHlIaQ==
+
+angular-messages@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-messages/-/angular-messages-1.7.7.tgz#bd092a6ff0edca246d32780f8fe2de46bc6885bb"
+  integrity sha512-XaMD6T0DSQy+6XZUUh0FARvwdwKUgWv4ea/x49Jd1q60dNA1FfJ5hCBDZcRYNQn+Q4Z0Mbjo8uRILywW4zIUhA==
+
+angular-route@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-route/-/angular-route-1.7.7.tgz#0573c8efa87e735bcd4f64f6551a176faca3b6d1"
+  integrity sha512-nshsCti751h8GfvYQ2nlTbQnaY/q5zvxLctj78sS5SjB8iRDqNbT1NVNz8B/nDQUudjc7etE7xYaTdM8idzq6g==
+
+angular-sanitize@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-sanitize/-/angular-sanitize-1.7.7.tgz#5852592ea885d48db1f2718a3ec7b6e3330950d6"
+  integrity sha512-DZ0kidLOOrq/mbqwKbeT2aSlT2Kdy25tZh5KcWOrRXx26imbhQfwbuncMYMFh7uPqfWySAI534+XhjnmhJ626Q==
+
+angular-touch@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular-touch/-/angular-touch-1.7.7.tgz#82d3185352b4e6b3761d3442c952e64017d0a11a"
+  integrity sha512-Adanic7xzlZMVoi2hh8kDerGg+qX0VounC5z438O6rNcH7Eg3h3nNXAIXVu5GvZs2mEdNvE/Qru223N6bN93XA==
+
+angular-ui-bootstrap@angular-ui/bootstrap:
+  version "2.5.4"
+  resolved "https://codeload.github.com/angular-ui/bootstrap/tar.gz/baf0a567f9f4641848a9a4699695f9cde5f28f70"
+
+angular@^1.7.7:
+  version "1.7.7"
+  resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.7.tgz#26bd87693deadcbd5944610a7a0463fc79a18803"
+  integrity sha512-MH3JEGd8y/EkNCKJ8EV6Ch0j9X0rZTta/QVIDpBWaIdfh85/e5KO8+ZKgvWIb02MQuiS20pDFmMFlv4ZaLcLWg==
+
 array-filter@~0.0.0:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/array-filter/-/array-filter-0.0.1.tgz#7da8cf2e26628ed732803581fd21f67cacd2eeec"
