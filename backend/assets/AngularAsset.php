@@ -14,10 +14,12 @@ use yii\web\AssetBundle;
 
 class AngularAsset extends AssetBundle
 {
-    public $sourcePath = '@bower';
+    public $sourcePath = '@vendor/../node_modules';
     public $js = [
         'angular/angular.js',
         'angular-route/angular-route.js',
+        'angular-aria/angular-aria.js',
+        'angular-material/angular-material.js',
         'angular-animate/angular-animate.js',
         'angular-touch/angular-touch.js',
         'angular-sanitize/angular-sanitize.js',
