@@ -3,10 +3,7 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-
-
 use yii\helpers\Html;
-
 use backend\assets\AppAsset;
 use backend\assets\AngularUIAsset;
 use denchotsanov\assets\AdminAsset;
@@ -30,7 +27,12 @@ AngularUIAsset::register($this);
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
+    <script type="text/javascript">
 
+        var webroot = <?php echo json_encode( Yii::$app->request->baseUrl) ?>;
+
+
+    </script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini" ng-controller="MainController">
 <script>
