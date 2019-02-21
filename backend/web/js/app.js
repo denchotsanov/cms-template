@@ -4,7 +4,7 @@ var app = angular.module('backend', [
     'ngMaterial',
     'ngAria',
     'ngAnimate',
-    'ui.Bootstrap',
+    'ui.bootstrap',
     // 'ngCookies',
     // 'flow',
     'ngMessages',
