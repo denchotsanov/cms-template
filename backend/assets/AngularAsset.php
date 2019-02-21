@@ -23,6 +23,7 @@ class AngularAsset extends AssetBundle
         'angular-animate/angular-animate.js',
         'angular-touch/angular-touch.js',
         'angular-sanitize/angular-sanitize.js',
+        'angular-messages/angular-messages.js',
 
     ];
     public $jsOptions = [
