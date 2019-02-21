@@ -14,7 +14,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="user-index box box-primary" ng-controller="UsersController">
     <?php Pjax::begin(); ?>
     <div class="box-header with-border">
-        <a href="#" class="btn btn-success btn-flat" ng-click="$ctrl.open()">Create user</a>
+        <a href="#" class="btn btn-success btn-flat" ng-click="openPopup()">Create user</a>
 
     </div>
     <div class="box-body table-responsive no-padding">
@@ -52,6 +52,23 @@ $this->params['breadcrumbs'][] = $this->title;
     </div>
     <?php Pjax::end(); ?>
 </div>
-<modal id="user-modal">
-
-</modal>
+<script type="text/ng-template" id="myModalContent.html">
+    <!-- template for modal -->
+    <div class="modal-header">
+        <h3 class="modal-title">Choose your products!</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+            <div class="checkbox" ng-repeat="item in products">
+                <label>
+                    <input type="checkbox" ng-click="chkChange(item)" ng-checked="selected.indexOf(item) !== -1"/>
+                    {{item}}
+                </label>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" ng-click="ok()">OK</button>
+        <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+    </div>
+</script>
