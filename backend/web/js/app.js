@@ -5,11 +5,11 @@ var app = angular.module('backend', [
     'ngAria',
     'ngAnimate',
     'ui.bootstrap',
+    'ngMessages',
+    'ngSanitize',
     // 'ngCookies',
     // 'flow',
-    'ngMessages',
     // 'angular-drag',
-    'ngSanitize',
     // 'ngMask'
 ]);
 
