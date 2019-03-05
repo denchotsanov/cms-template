@@ -25,18 +25,13 @@ class ApiController extends Controller
     }
 
     public function actionCreateUser(){
-
         $model = new UserForm();
         $require = json_decode(Yii::$app->request->getRawBody(),true);
-
         $model->setAttributes($require);
-
         if($model->validate()) {
-            $model->createNewUser();
-            return $model;
+            return $model->createNewUser();
         } else {
             return $model;
         }
-
     }
 }
