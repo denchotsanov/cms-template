@@ -9,6 +9,7 @@
 namespace backend\models;
 
 use yii\base\Model;
+use yii\helpers\ArrayHelper;
 
 class UserForm extends Model
 {
@@ -32,7 +33,7 @@ class UserForm extends Model
 
             ['status', 'in', 'range' => [\common\models\User::STATUS_ACTIVE, \common\models\User::STATUS_DELETED]],
 
-            ['role','safe'],
+            [['role','success'],'safe'],
         ];
     }
 
@@ -48,7 +49,7 @@ class UserForm extends Model
         $user->setPassword($this->password);
         $user->generateAuthKey();
 
-        return $user->save() ? $user : null;
+        return $user->save() ? ArrayHelper::merge(['success'=>true],$user) : ['error'=>$user->getFirstError()];
     }
 
 

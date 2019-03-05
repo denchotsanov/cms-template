@@ -8,9 +8,9 @@ use yii\web\View;
 /* @var $model common\models\User */
 /* @var $profile common\models\UserProfile */
 
-$this->title = 'User profile: '.$model->username;
+$this->title = 'User profile: '.$model->email;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
-$this->params['breadcrumbs'][] = $model->username;
+$this->params['breadcrumbs'][] = $model->email;
 $directoryAsset = Url::to('@web');
 
 $profile = $model;
@@ -27,7 +27,7 @@ JS
 ?>
 <section class="container">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-sm-3">
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
@@ -94,7 +94,7 @@ JS
             <!-- /.box -->
         </div>
         <!-- /.col -->
-        <div class="col-md-9">
+        <div class="col-sm-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
                     <li class="active"><a href="#activity" data-id="#activity" data-action="timeline-profile" data-toggle="tab" aria-expanded="true">Activity</a></li>

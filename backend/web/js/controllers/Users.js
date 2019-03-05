@@ -4,14 +4,13 @@ app.controller('UsersController', function ($scope, $timeout, $window, $modal) {
         $modal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-
             templateUrl: webroot + '/user/create',
             controller: 'CreateUserController'
         });
     };
 });
 
-app.controller('CreateUserController', function ($modalInstance, $scope, $http) {
+app.controller('CreateUserController', function ($modalInstance,$window, $scope, $http) {
 
     $scope.userForm = {
         email:'',
@@ -27,19 +26,18 @@ app.controller('CreateUserController', function ($modalInstance, $scope, $http) 
             url: webroot + '/api/create-user',
             data: $scope.userForm,
         }).then(function successCallback(response) {
-            console.log(response);
-            if (response.data.success && response.data.success === 'true') {
-                if($scope.loginCredentials.selectEvent===""){
-                    $window.location.href = fullroot + '/' + response.data.username + '/account';
-                } else {
-                    $http({
-                        method: 'POST',
-                        url: webroot + '/site/joinPresentation',
-                        data: { id:$scope.loginCredentials.selectEvent.id },
-                    }).then(function (response) {
-                        $window.location.href = response.data.watchURL;
-                    });
-                }
+            console.log(response.data.success);
+            if (response.data.success && response.data.success === true) {
+                $window.location.href = fullroot + '/user/update/' + response.data.id;
+                // } else {
+                //     $http({
+                //         method: 'POST',
+                //         url: webroot + '/site/joinPresentation',
+                //         data: { id:$scope.loginCredentials.selectEvent.id },
+                //     }).then(function (response) {
+                //         $window.location.href = response.data.watchURL;
+                //     });
+                // }
             } else {
                 $scope.loginError = true;
             }

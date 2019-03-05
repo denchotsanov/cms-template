@@ -56,11 +56,11 @@ return [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
-
                 '/' => 'site/index',
                 'login' => 'site/login',
                 'signup' => 'site/signup',
-                'logout' => 'site/logout'
+                'logout' => 'site/logout',
+                '<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
 
