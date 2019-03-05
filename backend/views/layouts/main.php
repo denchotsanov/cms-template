@@ -30,6 +30,7 @@ AngularUIAsset::register($this);
     <script type="text/javascript">
 
         var webroot = <?php echo json_encode( Yii::$app->request->baseUrl) ?>;
+        var fullroot = <?php echo json_encode( Yii::$app->request->baseUrl) ?>;
 
 
     </script>
