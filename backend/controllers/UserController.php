@@ -71,8 +71,17 @@ class UserController extends Controller
      */
     public function actionUpdate($id)
     {
+        $model =  $this->findModel($id);
+
+        $userModel= [
+            'username' => $model->username,
+            'email'=> $model->email,
+            'avatar' => $model->getUserAvatarUrl(),
+        ];
+
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' =>$model,
+            'user' =>$userModel,
         ]);
     }
 

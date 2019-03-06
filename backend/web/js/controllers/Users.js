@@ -29,15 +29,6 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
             console.log(response.data.success);
             if (response.data.success && response.data.success === true) {
                 $window.location.href = fullroot + '/user/update/' + response.data.id;
-                // } else {
-                //     $http({
-                //         method: 'POST',
-                //         url: webroot + '/site/joinPresentation',
-                //         data: { id:$scope.loginCredentials.selectEvent.id },
-                //     }).then(function (response) {
-                //         $window.location.href = response.data.watchURL;
-                //     });
-                // }
             } else {
                 $scope.loginError = true;
             }
@@ -50,4 +41,12 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
         $modalInstance.dismiss('cancel');
 
     };
+});
+
+app.controller('UpdateUserController', function ($scope,$window) {
+    $scope.user = $window.user;
+
+    $scope.openTab = 1;
+
+
 });
