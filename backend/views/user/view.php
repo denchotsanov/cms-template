@@ -16,37 +16,32 @@ $directoryAsset = Url::to('@web');
 $profile = $model;
 
 $this->registerJs( <<<JS
-    $('a[data-toggle="tab"]').click(function(){
-        var obj = $(this).data('id');
-        var uId = $(this).data('user-id');
-        var url = $(this).data('action');
-        $(obj).load(url, { "id" : uId });
-    })
+    
 JS
     ,View::POS_READY);
 ?>
-<section class="container">
+<script>
+    window.user = <?php echo json_encode($user); ?>;
+</script>
+
+<section ng-controller="UpdateUserController">
     <div class="row">
         <div class="col-sm-3">
             <!-- Profile Image -->
             <div class="box box-primary">
                 <div class="box-body box-profile">
-                    <img class="profile-user-img img-responsive img-circle" src="" alt="User profile picture">
-
-                    <h3 class="profile-username text-center"><?= $profile->username; ?></h3>
-                    <p class="text-muted text-center">Software Engineer</p>
-
+                    <img class="profile-user-img img-responsive img-circle" ng-src="{{user.avatar}}" alt="User profile picture">
+                    <h3 class="profile-username text-center">{{user.email}}</h3>
+                    <p class="text-muted text-center">{{user.username}}</p>
                     <ul class="list-group list-group-unbordered">
                         <li class="list-group-item">
                             <b>Followers</b> <a class="pull-right">0</a>
                         </li>
-                        <li class="list-group-item">
-                            <b>Following</b> <a class="pull-right">0</a>
-                        </li>
+
                     </ul>
-                    <?php if($model->id != Yii::$app->user->identity->id):?>
-                        <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
-                    <?php endif; ?>
+
+                    <a href="#" class="btn btn-danger btn-block btn-flat"><b>Block User</b></a>
+                    <a href="#" class="btn btn-primary btn-block btn-flat"><b>Reset Password</b></a>
                 </div>
                 <!-- /.box-body -->
             </div>
@@ -97,13 +92,14 @@ JS
         <div class="col-sm-9">
             <div class="nav-tabs-custom">
                 <ul class="nav nav-tabs">
-                    <li class="active"><a href="#activity" data-id="#activity" data-action="timeline-profile" data-toggle="tab" aria-expanded="true">Activity</a></li>
-                    <li class=""><a href="#timeline" data-id="#timeline" data-toggle="tab" data-action="timeline-profile" aria-expanded="false">Timeline</a></li>
-                    <li class=""><a href="#settings" data-id="#settings" data-toggle="tab" data-action="./user/setting-profile" aria-expanded="false">Settings</a></li>
-                    <li class=""><a href="#avatar" data-id="#avatar" data-toggle="tab" data-action="<?= Url::to(['user/avatar-profile'])?>" data-user-id="<?= $profile->id; ?>" aria-expanded="false">Avatar</a></li>
+                    <li ng-class="{'active' : openTab == 1 }"><a href="#" ng-click="openTab = 1">Profile</a></li>
+                    <li ng-class="{'active' : openTab == 2 }"><a href="#" ng-click="openTab = 2">Activity</a></li>
+                    <li ng-class="{'active' : openTab == 3 }"><a href="#" ng-click="openTab = 3">Timeline</a></li>
+                    <li ng-class="{'active' : openTab == 4 }"><a href="#" ng-click="openTab = 4">Settings</a></li>
+                    <li ng-class="{'active' : openTab == 5 }"><a href="#" ng-click="openTab = 5">Avatar</a></li>
                 </ul>
                 <div class="tab-content">
-                    <div class="tab-pane active" id="activity" data-action="">
+                    <div class="tab-pane" id="activity" ng-class="{'active' : openTab == 1 }" >
                         <!-- Post -->
                         <div class="post">
                             <div class="user-block">
@@ -218,7 +214,7 @@ JS
                         <!-- /.post -->
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="timeline" data-action="">
+                    <div class="tab-pane" id="timeline" ng-class="{'active' : openTab == 2 }">
                         <!-- The timeline -->
                         <ul class="timeline timeline-inverse">
                             <!-- timeline time label -->
@@ -313,7 +309,7 @@ JS
                         </ul>
                     </div>
                     <!-- /.tab-pane -->
-                    <div class="tab-pane" id="settings" data-action="">
+                    <div class="tab-pane" id="settings" ng-class="{'active' : openTab == 3 }">
                         <form class="form-horizontal">
                             <div class="form-group">
                                 <label for="inputName" class="col-sm-2 control-label">Name</label>
@@ -367,10 +363,7 @@ JS
                         </form>
                     </div>
                     <!-- /.tab-pane -->
-
-                    <div class="tab-pane" id="avatar" data-action="<?= Url::to(['user/avatar-profile'])?>">
-
-                    </div>
+                    <div class="tab-pane" id="avatar" ng-class="{'active' : openTab == 4 }"></div>
                     <!-- /.tab-pane -->
                 </div>
                 <!-- /.tab-content -->

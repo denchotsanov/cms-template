@@ -56,7 +56,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-sm-3">
         <div class="box box-default">
             <div class="box-body">
-                <a href="#" class="btn btn-app" ng-click="openPopup()">
+                <a href="#" class="btn btn-app btn-flat" ng-click="openPopup()">
                     <i class="fa fa-plus"></i>
                     Create
                 </a>
