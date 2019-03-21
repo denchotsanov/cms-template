@@ -5,7 +5,7 @@ use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
-/* @var $model \common\models\User */
+/* @var $model \backend\models\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Users';
