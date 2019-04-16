@@ -13,7 +13,8 @@ $params = array_merge(
 
 return [
     'id' => 'app-admin',
-    'name'=> 'TS Administration',
+    'version'=>'2.0.0',
+    'name'=> 'ADmin',
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
@@ -58,6 +59,7 @@ return [
 
                 '/' => 'site/index',
                 'login' => 'site/login',
+                'signup' => 'site/signup',
                 'logout' => 'site/logout'
             ],
         ],
