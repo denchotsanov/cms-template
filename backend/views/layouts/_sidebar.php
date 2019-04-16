@@ -22,8 +22,23 @@ $menuItems = [
                 'icon' => 'user',
             ],
             [
+                'label' => 'Assignment',
+                'url' => ['/rbac/assignment'],
+                'icon' => 'link',
+            ],
+            [
                 'label' => 'Role',
-                'url' => ['/rbac'],
+                'url' => ['/rbac/role'],
+                'icon' => 'link',
+            ],
+            [
+                'label' => 'Route',
+                'url' => ['/rbac/route'],
+                'icon' => 'link',
+            ],
+            [
+                'label' => 'Permission',
+                'url' => ['/rbac/permission'],
                 'icon' => 'link',
             ],
         ]
