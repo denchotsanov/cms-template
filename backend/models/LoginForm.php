@@ -1,6 +1,14 @@
 <?php
-namespace common\models;
+/**
+ * Created by PhpStorm.
+ * User: DTSHOME
+ * Date: 12/2/2019
+ * Time: 08:43 ч.
+ */
 
+namespace backend\models;
+
+use common\models\User;
 use Yii;
 use yii\base\Model;
 
@@ -11,7 +19,7 @@ class LoginForm extends Model
 {
     public $email;
     public $password;
-    public $rememberMe = true;
+    public $rememberMe = false;
 
     private $_user;
 
@@ -58,7 +66,7 @@ class LoginForm extends Model
         if ($this->validate()) {
             return Yii::$app->user->login($this->getUser(), $this->rememberMe ? 3600 * 24 * 30 : 0);
         }
-        
+
         return false;
     }
 

@@ -2,10 +2,12 @@
 namespace common\models;
 
 use Yii;
+use yii\base\Model;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
+use yii\web\Response;
 
 /**
  * User model
@@ -26,6 +28,10 @@ class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
+    const STATUS_PENDING = 1;
+    const STATUS_BANED = 2;
+    const STATUS_LOCKED = 3;
+    const STATUS_PASSWORD_RECOVER = 4;
     const STATUS_ACTIVE = 10;
 
 
@@ -40,10 +46,20 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * {@inheritdoc}
      */
+    /**
+     * {@inheritdoc}
+     */
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            'timestamp' => [
+                'class' => TimestampBehavior::class,
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at', 'updated_at'],
+                    ActiveRecord::EVENT_BEFORE_UPDATE => ['updated_at'],
+                ],
+                'value' => time(),
+            ],
         ];
     }
 
@@ -53,8 +69,9 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_INACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['status', 'default', 'value' => self::STATUS_PENDING],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE,self::STATUS_INACTIVE, self::STATUS_DELETED]],
+
         ];
     }
 
@@ -71,7 +88,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public static function findIdentityByAccessToken($token, $type = null)
     {
-        throw new NotSupportedException('"findIdentityByAccessToken" is not implemented.');
+        return static::findOne(['auth_key'=>$token]);
     }
 
     /**
@@ -83,6 +100,17 @@ class User extends ActiveRecord implements IdentityInterface
     public static function findByUsername($username)
     {
         return static::findOne(['username' => $username, 'status' => self::STATUS_ACTIVE]);
+    }
+
+    /**
+     * Finds user by username
+     *
+     * @param string $email
+     * @return static|null
+     */
+    public static function findByEmail($email)
+    {
+        return static::findOne(['email' => $email, 'status' => self::STATUS_ACTIVE]);
     }
 
     /**
@@ -172,6 +200,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Generates password hash from password and sets it to the model
      *
      * @param string $password
+     * @throws \yii\base\Exception
      */
     public function setPassword($password)
     {
@@ -180,6 +209,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Generates "remember me" authentication key
+     * @throws \yii\base\Exception
      */
     public function generateAuthKey()
     {
@@ -188,10 +218,12 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Generates new password reset token
+     * @throws \yii\base\Exception
      */
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+
     }
 
     public function generateEmailVerificationToken()
@@ -205,5 +237,79 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    /**
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getProfile()
+    {
+        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+    }
+
+    /**
+     * @return array
+     */
+    public function getStatusList()
+    {
+        return [
+            self::STATUS_DELETED => 'Denied',
+            self::STATUS_PENDING => 'Pending',
+            self::STATUS_BANED =>'Banned',
+            self::STATUS_LOCKED =>'Locked',
+            self::STATUS_PASSWORD_RECOVER =>'Password Recovery',
+            self::STATUS_ACTIVE => 'Active',
+        ];
+    }
+    public function getHtmlStatusList()
+    {
+        return [
+            self::STATUS_DELETED => '<span class="label label-danger">Denied</span>',
+            self::STATUS_PENDING => '<span class="label label-warning">Pending</span>',
+            self::STATUS_BANED =>'<span class="label label-warning">Banned</span>',
+            self::STATUS_LOCKED =>'<span class="label label-warning">Locked</span>',
+            self::STATUS_PASSWORD_RECOVER =>'<span class="label label-warning">Password Recovery</span>',
+            self::STATUS_ACTIVE => '<span class="label label-success">Active</span>',
+        ];
+    }
+
+    public function getStatusLabel(){
+        return $this->statusList[$this->status];
+    }
+    public function getHtmlStatusLabel(){
+        return $this->htmlStatusList[$this->status];
+    }
+
+    public function getUserInfo($isJson=false){
+        $model = [
+            'id' =>$this->id,
+            'username' => $this->email,
+            'fullname' => $this->email,
+            'avatar' => $this->getUserAvatarUrl(),
+            'created' => date('M. Y',$this->created_at),
+        ];
+
+        if($isJson){
+            return json_encode($model,true);
+        }
+        return $model;
+
+    }
+
+    public function getUserAvatarUrl(){
+
+//@todo: да го добавя при релация с профилна таблица
+//        if(strpos($this->avatar,'http')!== false){
+//            return $this->avatar;
+//        }
+//        if($this->crop_avatar){
+//            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->crop_avatar;
+//        }
+//        if($this->avatar){
+//            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->avatar;
+//        }
+
+        return Yii::$app->request->baseUrl .'/img/avatar5.png';
     }
 }

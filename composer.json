@@ -1,37 +1,64 @@
 {
-    "name": "yiisoft/yii2-app-advanced",
-    "description": "Yii 2 Advanced Project Template",
-    "keywords": ["yii2", "framework", "advanced", "project template"],
-    "homepage": "http://www.yiiframework.com/",
+    "name": "denchotsanov/cms-tempalate",
+    "description": "CMS Template",
+    "keywords": ["project template"],
     "type": "project",
     "license": "BSD-3-Clause",
-    "support": {
-        "issues": "https://github.com/yiisoft/yii2/issues?state=open",
-        "forum": "http://www.yiiframework.com/forum/",
-        "wiki": "http://www.yiiframework.com/wiki/",
-        "irc": "irc://irc.freenode.net/yii",
-        "source": "https://github.com/yiisoft/yii2"
-    },
+    "support": {},
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.4.0",
-        "yiisoft/yii2": "~2.0.14",
+        "php": ">=7.2.0",
+        "ext-json": "*",
+        "yiisoft/yii2": "~2.0.15.1",
         "yiisoft/yii2-bootstrap": "~2.0.0",
-        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0"
+        "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
+        "fxp/composer-asset-plugin": "^1.4",
+        "denchotsanov/yii2-admin-assets": "^0.0.6",
+        "yii2mod/yii2-rbac": "*",
+        "angular-ui/bootstrap": "dev-master"
     },
     "require-dev": {
+
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-gii": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
         "codeception/base": "^2.4.0",
         "phpunit/phpunit": "~6.5.5",
         "codeception/verify": "~1.0.0",
-        "symfony/browser-kit": ">=2.7 <=4.2.4"
+        "symfony/browser-kit": ">=2.7 <=4.2.4",
+        "symfony/var-dumper": "*"
     },
-    "config": {
+    "scripts": {
+        "post-create-project-cmd": [
+            "yii\\composer\\Installer::postCreateProject"
+        ],
+        "post-install-cmd": [
+
+        ],
+        "post-update-cmd": [
+
+        ]
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "master-dev"
+        },
+        "yii\\composer\\Installer::postCreateProject": {
+            "setPermission": [
+                {
+                    "runtime": "0777",
+                    "web/assets": "0777",
+                    "web/uploads": "0777",
+                    "yii": "0755"
+                }
+            ]
+        }
+    },
+    "config":{
         "process-timeout": 1800,
-        "fxp-asset": {
-            "enabled": false
+        "fxp-asset.installer-paths":{
+            "npm-asset-library": "node_modules",
+            "bower-asset-library": "vendor/bower-asset"
         }
     },
     "repositories": [
