@@ -16,6 +16,7 @@ use yii\web\Response;
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
+ * @property string $verification_token
  * @property string $email
  * @property string $auth_key
  * @property integer $status
@@ -26,6 +27,9 @@ use yii\web\Response;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
+
+    const STATUS_INACTIVE = 9;
+
     const STATUS_PENDING = 1;
     const STATUS_BANED = 2;
     const STATUS_LOCKED = 3;
@@ -68,7 +72,9 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_PENDING],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE,self::STATUS_INACTIVE, self::STATUS_DELETED]],
+
         ];
     }
 
@@ -125,6 +131,19 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne([
             'password_reset_token' => $token,
             'status' => self::STATUS_ACTIVE,
+        ]);
+    }
+
+    /**
+     * Finds user by verification email token
+     *
+     * @param string $token verify email token
+     * @return static|null
+     */
+    public static function findByVerificationToken($token) {
+        return static::findOne([
+            'verification_token' => $token,
+            'status' => self::STATUS_INACTIVE
         ]);
     }
 
@@ -207,6 +226,13 @@ class User extends ActiveRecord implements IdentityInterface
     public function generatePasswordResetToken()
     {
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
+
+
+    }
+
+    public function generateEmailVerificationToken()
+    {
+        $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
 
     }
 
