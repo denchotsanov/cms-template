@@ -2,11 +2,12 @@
 namespace backend\controllers;
 
 use backend\models\SignupForm;
+use backend\models\LoginForm;
 use Yii;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
-use common\models\LoginForm;
+
 
 /**
  * Site controller
@@ -36,7 +37,7 @@ class SiteController extends Controller
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    'logout' => ['post'],
+                    'logout' => ['POST','GET'],
                 ],
             ],
         ];
@@ -50,8 +51,8 @@ class SiteController extends Controller
         return [
             'error' => [
                 'class' => 'yii\web\ErrorAction',
-                'layout' => Yii::$app->user->isGuest ? 'login': 'main',
-            ],
+                'layout' => Yii::$app->user->isGuest ? 'login':'main',
+                ],
         ];
     }
 

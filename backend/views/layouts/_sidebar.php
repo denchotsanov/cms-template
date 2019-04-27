@@ -10,27 +10,44 @@
 /* @var $this \yii\web\View */
 
 use denchotsanov\widgets\Menu;
-use yii\helpers\ArrayHelper;
 
 $menuItems = [
     [
         'label' => 'Users',
-        'url' => ['user/index'],
-        'icon' => 'fa-user',
-        'pjax' => true,
+        'icon' => 'user',
         'items' => [
             [
+                'label' => 'Users',
+                'url' => ['/user'],
+                'icon' => 'user',
+            ],
+            [
+                'label' => 'Assignment',
+                'url' => ['/rbac/assignment'],
+                'icon' => 'link',
+            ],
+            [
                 'label' => 'Role',
-                'url' => ['rbac/'],
-                'icon' => 'fa-link',
+                'url' => ['/rbac/role'],
+                'icon' => 'link',
+            ],
+            [
+                'label' => 'Route',
+                'url' => ['/rbac/route'],
+                'icon' => 'link',
+            ],
+            [
+                'label' => 'Permission',
+                'url' => ['/rbac/permission'],
+                'icon' => 'link',
             ],
         ]
     ],
     [
         'label' => 'Sing out',
-        'url' => ['site/logout'],
+        'url' => ['/logout'],
         'visible' => !Yii::$app->user->isGuest,
-        'icon' => 'fa-sign-out'],
+        'icon' => 'sign-out'],
     [
         'label' => 'Menu Yii2',
         'options' => ['class' => 'header'],
@@ -39,14 +56,14 @@ $menuItems = [
     [
         'label' => 'Gii',
         'url' => ['/gii'],
-        'icon' => 'fa-gavel',
+        'icon' => 'gavel',
         'visible' => YII_ENV_DEV,
         'pjax' => true],
     [
         'label' => 'Debug',
         'url' => ['/debug'],
         'visible' => YII_ENV_DEV,
-        'icon' => 'fa-bug'],
+        'icon' => 'bug'],
 ];
 
 ?>
@@ -56,12 +73,10 @@ $menuItems = [
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="<?= Yii::$app->user->identity->username ?>" class="img-circle"
-                     alt="User Image"/>
+                <img src="{{user.avatar}}" class="img-circle" alt="User Image"/>
             </div>
             <div class="pull-left info">
-                <p><?= Yii::$app->user->identity->username; ?></p>
-
+                <p>{{user.username}}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
