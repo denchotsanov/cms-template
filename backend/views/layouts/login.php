@@ -6,7 +6,7 @@
  * Time: 08:02 ч.
  */
 
-use denchotsanov\assets\AdminAsset;
+use denchotsanov\assets\assets\AdminAsset;
 use backend\assets\AppAsset;
 use yii\helpers\Html;
 
