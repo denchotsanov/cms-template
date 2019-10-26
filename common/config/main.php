@@ -7,7 +7,7 @@ return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
     'modules' => [
         'rbac' => [
-            'class' => 'yii2mod\rbac\Module',
+            'class' => 'denchotsanov\rbac\Module',
         ],
     ],
     'components' => [
