@@ -7,9 +7,11 @@
  * Time: 01:23 ч.
  */
 
+use denchotsanov\assets\widgets\Menu;
+
 /* @var $this \yii\web\View */
 
-use denchotsanov\widgets\Menu;
+
 
 $menuItems = [
     [

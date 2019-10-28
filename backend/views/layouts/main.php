@@ -3,14 +3,13 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
+use denchotsanov\assets\assets\AdminAsset;
 use yii\helpers\Html;
 use backend\assets\AppAsset;
-use backend\assets\AngularUIAsset;
-use denchotsanov\assets\AdminAsset;
+
 
 AppAsset::register($this);
 AdminAsset::register($this);
-AngularUIAsset::register($this);
 
 ?>
 <?php $this->beginPage(); ?>
