@@ -27,13 +27,11 @@ use yii\web\Response;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-
-    const STATUS_INACTIVE = 9;
-
     const STATUS_PENDING = 1;
     const STATUS_BANED = 2;
     const STATUS_LOCKED = 3;
     const STATUS_PASSWORD_RECOVER = 4;
+    const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
 
@@ -45,9 +43,6 @@ class User extends ActiveRecord implements IdentityInterface
         return '{{%user}}';
     }
 
-    /**
-     * {@inheritdoc}
-     */
     /**
      * {@inheritdoc}
      */
@@ -72,9 +67,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             ['status', 'default', 'value' => self::STATUS_PENDING],
-
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE,self::STATUS_INACTIVE, self::STATUS_DELETED]],
-
+            ['status', 'in', 'range' => [
+                    self::STATUS_PENDING,
+                    self::STATUS_ACTIVE,
+                    self::STATUS_BANED,
+                    self::STATUS_LOCKED,
+                    self::STATUS_PASSWORD_RECOVER,
+                    self::STATUS_INACTIVE,
+                    self::STATUS_DELETED
+                ]
+            ],
         ];
     }
 
