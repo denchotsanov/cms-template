@@ -8,6 +8,7 @@
 
 use denchotsanov\assets\widgets\Menu;
 use yii\bootstrap4\Html;
+use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 
@@ -97,7 +98,7 @@ $menuItems = [
                 <img src="<?php echo Yii::$app->user->identity->userAvatarUrl; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block"><?php echo Yii::$app->user->identity->email; ?></a>
+                <a href="<?php echo Url::to(['user/profile',Yii::$app->user->id]) ?>" class="d-block"><?php echo Yii::$app->user->identity->email; ?></a>
             </div>
         </div>
 

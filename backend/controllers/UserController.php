@@ -15,7 +15,7 @@ use yii\filters\AccessControl;
 /**
  * UserController implements the CRUD actions for User model.
  */
-class UserController extends Controller
+class UserController extends MainController
 {
     /**
      * {@inheritdoc}
@@ -27,7 +27,7 @@ class UserController extends Controller
                 'class' => AccessControl::class,
                 'rules' => [
                     [
-                        'actions' => ['create','update','delete','index','api-create'],
+                        'actions' => ['create','update','delete','profile','index','api-create'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -117,6 +117,13 @@ class UserController extends Controller
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionProfile($id){
+        $model =  $this->findModel($id);
+        return $this->render('profile', [
+            'model' =>$model,
+        ]);
     }
 
     /**
