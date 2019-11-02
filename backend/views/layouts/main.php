@@ -3,13 +3,12 @@
 /* @var $this \yii\web\View */
 /* @var $content string */
 
-use denchotsanov\assets\assets\AdminAsset;
+
 use yii\helpers\Html;
 use backend\assets\AppAsset;
 
 
 AppAsset::register($this);
-AdminAsset::register($this);
 
 ?>
 <?php $this->beginPage(); ?>

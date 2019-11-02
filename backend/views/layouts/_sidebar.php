@@ -7,7 +7,8 @@
  * Time: 01:23 ч.
  */
 
-use denchotsanov\assets\widgets\Menu;
+use yii\widgets\Menu;
+
 
 /* @var $this \yii\web\View */
 
