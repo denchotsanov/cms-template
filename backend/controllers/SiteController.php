@@ -5,7 +5,6 @@ use backend\models\SignupForm;
 use backend\models\LoginForm;
 use common\models\PasswordResetRequestForm;
 use Yii;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 
@@ -13,7 +12,7 @@ use yii\filters\AccessControl;
 /**
  * Site controller
  */
-class SiteController extends Controller
+class SiteController extends MainController
 {
     /**
      * {@inheritdoc}
