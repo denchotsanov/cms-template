@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: DTSHOME
@@ -11,8 +10,8 @@
 ?>
 <!-- Main Footer -->
 <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-        <b>Version</b> <?= Yii::$app->version; ?>
+    <div class="float-right d-none d-sm-block">
+        <b>Version</b> <?php echo Yii::$app->version; ?>
     </div>
-    <strong>Copyright &copy; 2017 - <?= date('Y', time()); ?> <a href="https://tsanov.eu">Tsanov.eu</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2017 - <?php echo date('Y', time()); ?> <a href="https://tsanov.eu">Tsanov.eu</a>.</strong> All rights reserved.
 </footer>

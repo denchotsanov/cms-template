@@ -13,7 +13,17 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "fxp/composer-asset-plugin": "^1.4",
         "denchotsanov/yii2-user-rbac": "*",
-        "angular-ui/bootstrap": "dev-master"
+        "denchotsanov/yii2-admin-assets": "dev-develop",
+        "angular-ui/bootstrap": "dev-master",
+        "bower-asset/angularjs": "^1.7.7",
+        "bower-asset/angular": "^1.7.7",
+        "bower-asset/angular-material": "^1.1.12",
+        "bower-asset/angular-animate": "^1.7.7",
+        "bower-asset/angular-touch": "^1.7.7",
+        "bower-asset/angular-sanitize": "^1.7.7",
+        "bower-asset/angular-route": "^1.7.7",
+        "bower-asset/angular-messages": "^1.7.7",
+        "bower-asset/angular-aria": "^1.7.7"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
@@ -45,7 +55,7 @@
     "config":{
         "process-timeout": 1800,
         "fxp-asset.installer-paths":{
-            "npm-asset-library": "node_modules",
+            "npm-asset-library": "vendor/npm-asset",
             "bower-asset-library": "vendor/bower-asset"
         }
     },

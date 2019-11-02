@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Created by PhpStorm.
  * User: DTSHOME
@@ -7,42 +6,44 @@
  * Time: 01:23 ч.
  */
 
-use yii\widgets\Menu;
-
+use denchotsanov\assets\widgets\Menu;
+use yii\bootstrap4\Html;
 
 /* @var $this \yii\web\View */
 
-
-
 $menuItems = [
+        ['label' => 'Dashboard',
+            'icon' => 'fas fa-tachometer-alt',
+            'url' => ['/site/index'],
+            ],
     [
         'label' => 'Users',
-        'icon' => 'user',
+        'icon' => 'fas fa-users',
         'items' => [
             [
                 'label' => 'Users',
                 'url' => ['/user'],
-                'icon' => 'user',
+                'icon' => 'far fa-circle',
             ],
             [
                 'label' => 'Assignment',
                 'url' => ['/rbac/assignment'],
-                'icon' => 'link',
+                'icon' => 'far fa-circle',
             ],
             [
                 'label' => 'Role',
                 'url' => ['/rbac/role'],
-                'icon' => 'link',
+                'icon' => 'far fa-circle',
             ],
             [
                 'label' => 'Route',
                 'url' => ['/rbac/route'],
-                'icon' => 'link',
+                'icon' => 'far fa-circle',
             ],
             [
                 'label' => 'Permission',
                 'url' => ['/rbac/permission'],
-                'icon' => 'link',
+                'icon' => 'far fa-circle',
             ],
         ]
     ],
@@ -50,57 +51,60 @@ $menuItems = [
         'label' => 'Sing out',
         'url' => ['/logout'],
         'visible' => !Yii::$app->user->isGuest,
-        'icon' => 'sign-out'],
+        'icon' => 'fas fa-sign-out-alt'],
+
     [
         'label' => 'Menu Yii2',
-        'options' => ['class' => 'header'],
+        'options' => ['class' => 'nav-header'],
         'visible' => YII_ENV_DEV,
     ],
     [
         'label' => 'Gii',
         'url' => ['/gii'],
-        'icon' => 'gavel',
+        'icon' => 'fas fa-gavel',
         'visible' => YII_ENV_DEV,
         'pjax' => true],
     [
         'label' => 'Debug',
         'url' => ['/debug'],
         'visible' => YII_ENV_DEV,
-        'icon' => 'bug'],
+        'icon' => 'fas fa-bug'],
 ];
 
 ?>
-<!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="{{user.avatar}}" class="img-circle" alt="User Image"/>
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="<?= Yii::$app->homeUrl; ?>" class="brand-link">
+<!--        <img src=""-->
+<!--             alt="AdminLTE Logo"-->
+<!--             class="brand-image img-circle elevation-3"-->
+<!--             style="opacity: .8">-->
+        <span class="brand-text font-weight-light">
+            <?php echo Html::encode(Yii::$app->name); ?>
+        </span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{user.avatar}}" class="img-circle elevation-2" alt="User Image">
             </div>
-            <div class="pull-left info">
-                <p>{{user.username}}</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            <div class="info">
+                <a href="#" class="d-block">{{user.username}}</a>
             </div>
         </div>
 
-        <!-- search form -->
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search..."/>
-                <span class="input-group-btn">
-                <button type='submit' name='search' id='search-btn' class="btn btn-flat"><i class="fa fa-search"></i>
-                </button>
-              </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-        <?php try {
-            echo Menu::widget([
-                'items' => $menuItems]);
-        } catch (Exception $e) {
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <?php try {
+                echo Menu::widget([
+                    'items' => $menuItems]);
+            } catch (Exception $e) {
 
-        } ?>
-    </section>
+            } ?>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
     <!-- /.sidebar -->
 </aside>

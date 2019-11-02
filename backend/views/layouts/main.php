@@ -26,29 +26,21 @@ AppAsset::register($this);
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
     <script type="text/javascript">
-
         var webroot = <?php echo json_encode( Yii::$app->request->baseUrl) ?>;
         var fullroot = <?php echo json_encode( Yii::$app->request->baseUrl) ?>;
-
-
     </script>
 </head>
-<body class="hold-transition skin-blue sidebar-mini" ng-controller="MainController">
+<body class="hold-transition sidebar-mini layout-fixed" ng-controller="MainController">
+<?php $this->beginBody() ?>
 <script>
     window.user = <?php echo Yii::$app->user->identity->getUserInfo(true); ?>;
 </script>
-<?php $this->beginBody() ?>
-
-<div class="wrap">
+<div class="wrapper">
     <?php echo $this->render('_header'); ?>
-
-    <?= $this->render('_sidebar' ); ?>
-
+    <?php echo $this->render('_sidebar' ); ?>
     <?= $this->render('_content', ['content'=>$content]); ?>
 
     <?= $this->render('_contentFooter'); ?>
-
-    <?= $this->render('_controlSidebar'); ?>
 </div>
 
 <?php $this->endBody() ?>

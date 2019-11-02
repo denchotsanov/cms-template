@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3e6ea8bbb2cf6fbf0366adcf6f228204",
+    "content-hash": "6e736a6cfbf415dcb834e45c611b07a3",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -63,6 +63,45 @@
                 "yii2"
             ],
             "time": "2017-07-05T14:40:16+00:00"
+        },
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "e78ee8d9caf59e55880488dfbf10901ecd4bfbd7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/e78ee8d9caf59e55880488dfbf10901ecd4bfbd7",
+                "reference": "e78ee8d9caf59e55880488dfbf10901ecd4bfbd7",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "http://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "time": "2019-11-02T12:54:26+00:00"
         },
         {
             "name": "angular-ui/bootstrap",
@@ -626,6 +665,46 @@
             "description": "jQuery JavaScript Library",
             "homepage": "http://jquery.com",
             "time": "2019-10-23T05:15:13+00:00"
+        },
+        {
+            "name": "denchotsanov/yii2-admin-assets",
+            "version": "dev-develop",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/denchotsanov/yii2-admin-assets.git",
+                "reference": "69fd2637d3504d5f923e76bb7cea7f55f62cd4ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/69fd2637d3504d5f923e76bb7cea7f55f62cd4ab",
+                "reference": "69fd2637d3504d5f923e76bb7cea7f55f62cd4ab",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^3.0.0",
+                "fxp/composer-asset-plugin": "^1.4.0",
+                "php": "^7.0",
+                "yiisoft/yii2": "^2.0.28",
+                "yiisoft/yii2-bootstrap4": "^2.0.0"
+            },
+            "type": "yii2-extension",
+            "autoload": {
+                "psr-4": {
+                    "denchotsanov\\assets\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Dencho Tsanov",
+                    "email": "tsanov.dencho@gmail.com"
+                }
+            ],
+            "description": "AdminLTE Admin panel theme asset bundle for Yii2 ",
+            "time": "2019-11-02T18:46:51+00:00"
         },
         {
             "name": "denchotsanov/yii2-user",
@@ -1453,6 +1532,69 @@
             "time": "2019-07-02T10:42:21+00:00"
         },
         {
+            "name": "yiisoft/yii2-bootstrap",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/yiisoft/yii2-bootstrap.git",
+                "reference": "3c49557ae3165a3998ee65a4a6f718ac3b0db24e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/yiisoft/yii2-bootstrap/zipball/3c49557ae3165a3998ee65a4a6f718ac3b0db24e",
+                "reference": "3c49557ae3165a3998ee65a4a6f718ac3b0db24e",
+                "shasum": ""
+            },
+            "require": {
+                "bower-asset/bootstrap": "3.4.* | 3.3.* | 3.2.* | 3.1.*",
+                "yiisoft/yii2": "~2.0.6"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<7"
+            },
+            "type": "yii2-extension",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "yii\\bootstrap\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Qiang Xue",
+                    "email": "qiang.xue@gmail.com",
+                    "homepage": "http://www.yiiframework.com/"
+                },
+                {
+                    "name": "Alexander Makarov",
+                    "email": "sam@rmcreative.ru",
+                    "homepage": "http://rmcreative.ru/"
+                },
+                {
+                    "name": "Antonio Ramirez",
+                    "email": "amigo.cobos@gmail.com"
+                },
+                {
+                    "name": "Paul Klimov",
+                    "email": "klimov.paul@gmail.com"
+                }
+            ],
+            "description": "The Twitter Bootstrap extension for the Yii framework",
+            "keywords": [
+                "bootstrap",
+                "yii2"
+            ],
+            "time": "2019-10-23T13:59:08+00:00"
+        },
+        {
             "name": "yiisoft/yii2-bootstrap4",
             "version": "2.0.8",
             "source": {
@@ -2029,7 +2171,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "angular-ui/bootstrap": 20
+        "angular-ui/bootstrap": 20,
+        "denchotsanov/yii2-admin-assets": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,
