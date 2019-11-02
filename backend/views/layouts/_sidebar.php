@@ -94,10 +94,10 @@ $menuItems = [
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{user.avatar}}" class="img-circle elevation-2" alt="User Image">
+                <img src="<?php echo Yii::$app->user->identity->userAvatarUrl; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="#" class="d-block">{{user.username}}</a>
+                <a href="#" class="d-block"><?php echo Yii::$app->user->identity->email; ?></a>
             </div>
         </div>
 

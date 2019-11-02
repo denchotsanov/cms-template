@@ -288,21 +288,7 @@ class User extends ActiveRecord implements IdentityInterface
         return $this->htmlStatusList[$this->status];
     }
 
-    public function getUserInfo($isJson=false){
-        $model = [
-            'id' =>$this->id,
-            'username' => $this->email,
-            'fullname' => $this->email,
-            'avatar' => $this->getUserAvatarUrl(),
-            'created' => date('M. Y',$this->created_at),
-        ];
 
-        if($isJson){
-            return json_encode($model,true);
-        }
-        return $model;
-
-    }
 
     public function getUserAvatarUrl(){
 
@@ -317,6 +303,6 @@ class User extends ActiveRecord implements IdentityInterface
 //            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->avatar;
 //        }
 
-        return Yii::$app->request->baseUrl .'/img/avatar5.png';
+        return Yii::$app->request->baseUrl .'/img/avatar.jpg';
     }
 }

@@ -32,9 +32,7 @@ AppAsset::register($this);
 </head>
 <body class="hold-transition sidebar-mini layout-fixed" ng-controller="MainController">
 <?php $this->beginBody() ?>
-<script>
-    window.user = <?php echo Yii::$app->user->identity->getUserInfo(true); ?>;
-</script>
+
 <div class="wrapper">
     <?php echo $this->render('_header'); ?>
     <?php echo $this->render('_sidebar' ); ?>
