@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6e736a6cfbf415dcb834e45c611b07a3",
+    "content-hash": "546ddbc9f1abedc2f9a0a37de75ee0c3",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -142,6 +142,151 @@
             "description": "Native AngularJS (Angular) directives for Twitter's Bootstrap",
             "homepage": "http://angular-ui.github.io/bootstrap/",
             "time": "2014-08-22T11:32:43+00:00"
+        },
+        {
+            "name": "bower-asset/angular",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular.git",
+                "reference": "56690b5e545ad36d04e369a65171de1adbe3ce64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular/zipball/56690b5e545ad36d04e369a65171de1adbe3ce64",
+                "reference": "56690b5e545ad36d04e369a65171de1adbe3ce64"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-animate",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular-animate.git",
+                "reference": "1e182b37089bf7f9bb1993a25e00475cb028d4ad"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-animate/zipball/1e182b37089bf7f9bb1993a25e00475cb028d4ad",
+                "reference": "1e182b37089bf7f9bb1993a25e00475cb028d4ad"
+            },
+            "require": {
+                "bower-asset/angular": "1.7.8"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-aria",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular-aria.git",
+                "reference": "bf2348e7645347a160681d442a538f25ada0d307"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-aria/zipball/bf2348e7645347a160681d442a538f25ada0d307",
+                "reference": "bf2348e7645347a160681d442a538f25ada0d307"
+            },
+            "require": {
+                "bower-asset/angular": "1.7.8"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-material",
+            "version": "1.5.0.x-dev",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-material.git",
+                "reference": "d483e259d494295e77b43221c9295247aac81832"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-material/zipball/d483e259d494295e77b43221c9295247aac81832",
+                "reference": "d483e259d494295e77b43221c9295247aac81832"
+            },
+            "require": {
+                "bower-asset/angular": ">=1.4.8,<2.0.0",
+                "bower-asset/angular-animate": ">=1.4.8,<2.0.0",
+                "bower-asset/angular-aria": ">=1.4.8,<2.0.0",
+                "bower-asset/angular-messages": ">=1.4.8,<2.0.0"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ],
+            "time": "2016-02-25T17:33:51+00:00"
+        },
+        {
+            "name": "bower-asset/angular-messages",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular-messages.git",
+                "reference": "e135ce90dc48c33298388b0c633246cc8db8892e"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-messages/zipball/e135ce90dc48c33298388b0c633246cc8db8892e",
+                "reference": "e135ce90dc48c33298388b0c633246cc8db8892e"
+            },
+            "require": {
+                "bower-asset/angular": "1.7.8"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angular-sanitize",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular-sanitize.git",
+                "reference": "845b3064da357de96f38fdbbb923f918d0d82bbe"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular-sanitize/zipball/845b3064da357de96f38fdbbb923f918d0d82bbe",
+                "reference": "845b3064da357de96f38fdbbb923f918d0d82bbe"
+            },
+            "require": {
+                "bower-asset/angular": "1.7.8"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "bower-asset/angularjs",
+            "version": "v1.7.8",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:angular/bower-angular.git",
+                "reference": "56690b5e545ad36d04e369a65171de1adbe3ce64"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/angular/bower-angular/zipball/56690b5e545ad36d04e369a65171de1adbe3ce64",
+                "reference": "56690b5e545ad36d04e369a65171de1adbe3ce64"
+            },
+            "type": "bower-asset",
+            "license": [
+                "MIT"
+            ]
         },
         {
             "name": "bower-asset/bootstrap",
@@ -2171,8 +2316,8 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "angular-ui/bootstrap": 20,
-        "denchotsanov/yii2-admin-assets": 20
+        "denchotsanov/yii2-admin-assets": 20,
+        "angular-ui/bootstrap": 20
     },
     "prefer-stable": false,
     "prefer-lowest": false,

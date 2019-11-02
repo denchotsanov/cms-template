@@ -12,10 +12,11 @@ use yii\bootstrap4\Html;
 /* @var $this \yii\web\View */
 
 $menuItems = [
-        ['label' => 'Dashboard',
-            'icon' => 'fas fa-tachometer-alt',
-            'url' => ['/site/index'],
-            ],
+    [
+        'label' => 'Dashboard',
+        'icon' => 'fas fa-tachometer-alt',
+        'url' => ['/site/index'],
+    ],
     [
         'label' => 'Users',
         'icon' => 'fas fa-users',
@@ -51,7 +52,8 @@ $menuItems = [
         'label' => 'Sing out',
         'url' => ['/logout'],
         'visible' => !Yii::$app->user->isGuest,
-        'icon' => 'fas fa-sign-out-alt'],
+        'icon' => 'fas fa-sign-out-alt'
+    ],
 
     [
         'label' => 'Menu Yii2',
@@ -63,22 +65,26 @@ $menuItems = [
         'url' => ['/gii'],
         'icon' => 'fas fa-gavel',
         'visible' => YII_ENV_DEV,
-        'pjax' => true],
+        'pjax' => true
+    ],
     [
         'label' => 'Debug',
         'url' => ['/debug'],
         'visible' => YII_ENV_DEV,
-        'icon' => 'fas fa-bug'],
+        'icon' => 'fas fa-bug'
+    ],
 ];
 
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="<?= Yii::$app->homeUrl; ?>" class="brand-link">
-<!--        <img src=""-->
-<!--             alt="AdminLTE Logo"-->
-<!--             class="brand-image img-circle elevation-3"-->
-<!--             style="opacity: .8">-->
+        <?php echo Html::img('@web/img/cms.png',
+            [
+                'class' => 'brand-image elevation-3',
+                'alt' => 'CMS Logo',
+                'style' => 'opacity: .8;border-radius: 10%;background: #ffffff85;'
+            ]); ?>
         <span class="brand-text font-weight-light">
             <?php echo Html::encode(Yii::$app->name); ?>
         </span>
@@ -99,7 +105,8 @@ $menuItems = [
         <nav class="mt-2">
             <?php try {
                 echo Menu::widget([
-                    'items' => $menuItems]);
+                    'items' => $menuItems
+                ]);
             } catch (Exception $e) {
 
             } ?>
