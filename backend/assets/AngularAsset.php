@@ -24,7 +24,15 @@ class AngularAsset extends AssetBundle
         'angular-touch/angular-touch.js',
         'angular-sanitize/angular-sanitize.js',
         'angular-messages/angular-messages.js',
+        'admin-lte/plugins/jquery/jquery.min.js',
+        'admin-lte/plugins/bootstrap/js/bootstrap.bundle.min.js',
+        'admin-lte/dist/js/adminlte.js',
+    ];
+    public $css = [
 
+        'admin-lte/plugins/fontawesome-free/css/all.min.css',
+        'admin-lte/plugins/icheck-bootstrap/icheck-bootstrap.min.css',
+        'admin-lte/dist/css/adminlte.min.css',
     ];
     public $jsOptions = [
         'position' => View::POS_HEAD,

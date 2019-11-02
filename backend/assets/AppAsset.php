@@ -13,6 +13,8 @@ class AppAsset extends AssetBundle
     public $baseUrl = '@web';
     public $css = [
         'css/site.css',
+        '//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700',
+        '//fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700',
     ];
     public $js = [
         'js/app.js',
@@ -21,7 +23,8 @@ class AppAsset extends AssetBundle
     ];
     public $depends = [
         'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-        'backend\assets\AngularAsset'
+        'yii\bootstrap4\BootstrapAsset',
+        'backend\assets\AngularAsset',
+        'backend\assets\AngularUIAsset',
     ];
 }
