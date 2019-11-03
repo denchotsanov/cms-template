@@ -8,11 +8,12 @@
 
 use denchotsanov\assets\widgets\Menu;
 use yii\bootstrap4\Html;
+use yii\helpers\ArrayHelper;
 use yii\helpers\Url;
 
 /* @var $this \yii\web\View */
 
-$menuItems = [
+$temp = [
     [
         'label' => 'Dashboard',
         'icon' => 'fas fa-tachometer-alt',
@@ -55,26 +56,8 @@ $menuItems = [
         'visible' => !Yii::$app->user->isGuest,
         'icon' => 'fas fa-sign-out-alt'
     ],
-
-    [
-        'label' => 'Menu Yii2',
-        'options' => ['class' => 'nav-header'],
-        'visible' => YII_ENV_DEV,
-    ],
-    [
-        'label' => 'Gii',
-        'url' => ['/gii'],
-        'icon' => 'fas fa-gavel',
-        'visible' => YII_ENV_DEV,
-        'pjax' => true
-    ],
-    [
-        'label' => 'Debug',
-        'url' => ['/debug'],
-        'visible' => YII_ENV_DEV,
-        'icon' => 'fas fa-bug'
-    ],
 ];
+$menuItems = ArrayHelper::merge($temp, Yii::$app->params['menuList']);
 
 ?>
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
