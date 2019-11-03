@@ -10,7 +10,7 @@ class MainController extends Controller
 
     public function beforeAction($action)
     {
-        $this->view->title = Yii::$app->name;
+        $this->view->title = Yii::$app->name . $this->view->title;
         return parent::beforeAction($action);
     }
 
