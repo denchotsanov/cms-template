@@ -812,16 +812,16 @@
         },
         {
             "name": "denchotsanov/yii2-admin-assets",
-            "version": "v0.1.4",
+            "version": "v0.1.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/denchotsanov/yii2-admin-assets.git",
-                "reference": "8ea7fa6d217ea28dd5bdda98a31f59785aabbcc3"
+                "reference": "2039124975367998cdc4d05c7ceaeab18691d8f1"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/8ea7fa6d217ea28dd5bdda98a31f59785aabbcc3",
-                "reference": "8ea7fa6d217ea28dd5bdda98a31f59785aabbcc3",
+                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/2039124975367998cdc4d05c7ceaeab18691d8f1",
+                "reference": "2039124975367998cdc4d05c7ceaeab18691d8f1",
                 "shasum": ""
             },
             "require": {
@@ -848,7 +848,7 @@
                 }
             ],
             "description": "AdminLTE Admin panel theme asset bundle for Yii2 ",
-            "time": "2019-11-03T07:09:15+00:00"
+            "time": "2019-11-03T19:18:07+00:00"
         },
         {
             "name": "denchotsanov/yii2-user",
