@@ -3,6 +3,7 @@
 use common\models\User;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
 /* @var $searchModel backend\models\UserSearch */
 /* @var $model \backend\models\User */
@@ -11,56 +12,66 @@ use yii\widgets\Pjax;
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index" ng-controller="UsersController">
-    <div class="col-sm-9">
-        <div class="box box-primary">
+<div class="user-index">
+    <div class="row">
+        <div class="col-9">
+            <div class="card card-orange card-outline card-tabs">
+                <div class="card-header with-border"></div>
+                <div class="card-body table-responsive no-padding">
+                    <?php Pjax::begin(); ?>
+                    <?= GridView::widget([
+                        'dataProvider' => $dataProvider,
+                        'filterModel' => $searchModel,
+                        'layout' => "{items}\n{summary}\n{pager}",
+                        'columns' => [
+                            ['class' => 'yii\grid\SerialColumn'],
+                            [
+                                'attribute' => 'email',
+                                'filter' => true,
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    if ($model->profile) {
+                                        return  $model->profile->name . ' ( ' .   $model->email. ' )';
+                                    } else {
+                                        return $model->email;
+                                    }
 
-            <div class="box-header with-border"> </div>
-            <div class="box-body table-responsive no-padding">
-                <?php Pjax::begin(); ?>
-                <?= GridView::widget([
-                    'dataProvider' => $dataProvider,
-                    'filterModel' => $searchModel,
-                    'layout' => "{items}\n{summary}\n{pager}",
-                    'columns' => [
-                        ['class' => 'yii\grid\SerialColumn'],
-                        [
-                            'attribute' => 'username',
-                            'filter' => true,
-                            'format' => 'raw',
-                            'value' => function ($model) {
-//                       if(!$model->userProfile)
-                                return $model->username;
-//                        return $model->username.' ( '.$model->userProfile->fullname.' )';
-                            },
+                                },
+                            ],
+                            [
+                                'attribute' => 'status',
+                                'filter' => User::getStatusList(),
+                                'format' => 'raw',
+                                'value' => function ($model) {
+                                    return $model->htmlStatusLabel;
+                                },
+                            ],
+                            'created_at:date',
+                            [
+                                'class' => 'yii\grid\ActionColumn',
+                                'template' => '{update}{delete}'
+                            ],
                         ],
-                        'email:email',
-                        [
-                            'attribute' => 'status',
-                            'filter' => User::getStatusList(),
-                            'format' => 'raw',
-                            'value' => function ($model) {
-                                return $model->htmlStatusLabel;
-                            },
-                        ],
-                        'created_at:date',
-                        'updated_at:date',
-                        ['class' => 'yii\grid\ActionColumn',
-                            'template' => '{update}{delete}'],
-                    ],
-                ]); ?>
-                <?php Pjax::end(); ?>
+                    ]); ?>
+                    <?php Pjax::end(); ?>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="box box-default">
-            <div class="box-body">
-                <a href="#" class="btn btn-app btn-flat" ng-click="openPopup()">
-                    <i class="fa fa-plus"></i>
-                    Create
-                </a>
+        <div class="col-3">
+            <div class="card card-lime card-outline card-tabs">
+                <div class="card-body">
+                    <div class="row">
+                        <a href="#" class="btn btn-app">
+                            <i class="fas fa-plus"></i>Create
+                        </a>
+                    </div>
+                    <div class="row">
+
+                    </div>
+                </div>
             </div>
+
+
         </div>
     </div>
 </div>

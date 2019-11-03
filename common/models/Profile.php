@@ -42,9 +42,9 @@ class Profile extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
-            'user_id' => 'User ID',
-            'name' => 'Name',
+            'id' => Yii::t('admin', 'ID'),
+            'user_id' => Yii::t('admin', 'User ID'),
+            'name' => Yii::t('admin', 'Name'),
         ];
     }
 
