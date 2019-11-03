@@ -52,6 +52,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'template' => '{update}{delete}'
                             ],
                         ],
+
                     ]); ?>
                     <?php Pjax::end(); ?>
                 </div>
