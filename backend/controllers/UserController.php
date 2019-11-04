@@ -3,14 +3,13 @@
 namespace backend\controllers;
 
 use backend\models\UserForm;
+use denchotsanov\rbac\filter\AccessControl;
 use Yii;
 use backend\models\User;
 use backend\models\UserSearch;
-use yii\web\Controller;
 use yii\web\NotFoundHttpException;
-
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -25,13 +24,6 @@ class UserController extends MainController
         return [
             'access' => [
                 'class' => AccessControl::class,
-                'rules' => [
-                    [
-                        'actions' => ['create','update','delete','profile','index','api-create'],
-                        'allow' => true,
-                        'roles' => ['@'],
-                    ],
-                ],
             ],
             'verbs' => [
                 'class' => VerbFilter::class,

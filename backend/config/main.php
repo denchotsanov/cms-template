@@ -48,7 +48,6 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-
         'urlManager' => [
             'baseUrl' => $baseUrl,
             'scriptUrl' => '/backend/web/index.php',

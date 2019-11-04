@@ -4,9 +4,10 @@ namespace backend\controllers;
 use backend\models\SignupForm;
 use backend\models\LoginForm;
 use common\models\PasswordResetRequestForm;
+use denchotsanov\rbac\filter\AccessControl;
 use Yii;
 use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
+
 
 
 /**
@@ -26,11 +27,6 @@ class SiteController extends MainController
                     [
                         'actions' => ['login', 'error','signup','request-password-reset'],
                         'allow' => true,
-                    ],
-                    [
-                        'actions' => ['logout', 'index'],
-                        'allow' => true,
-                        'roles' => ['@'],
                     ],
                 ],
             ],

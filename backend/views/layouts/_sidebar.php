@@ -48,6 +48,11 @@ $temp = [
                 'url' => ['/rbac/permission'],
                 'icon' => 'far fa-circle',
             ],
+            [
+                'label' => 'Rule',
+                'url' => ['/rbac/rule'],
+                'icon' => 'far fa-circle',
+            ],
         ]
     ],
     [
