@@ -24,6 +24,11 @@ $directoryAsset = \yii\helpers\Url::to('@web');
     </ul>
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/" data-toggle="Back to main page">
+                <i class="fas fa-sitemap"></i>
+            </a>
+        </li>
         <!-- Messages Dropdown Menu -->
         <li class="nav-item dropdown">
             <a class="nav-link" data-toggle="dropdown" href="#">

@@ -1,6 +1,7 @@
 <?php
 
 use common\models\User;
+use yii\bootstrap4\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 
@@ -31,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'format' => 'raw',
                                 'value' => function ($model) {
                                     if ($model->profile) {
-                                        return  $model->profile->name . ' ( ' .   $model->email. ' )';
+                                        return $model->profile->name . ' ( ' . $model->email . ' )';
                                     } else {
                                         return $model->email;
                                     }
@@ -49,7 +50,15 @@ $this->params['breadcrumbs'][] = $this->title;
                             'created_at:date',
                             [
                                 'class' => 'yii\grid\ActionColumn',
-                                'template' => '{update}{delete}'
+                                'template' => '{update}{delete}',
+                                'buttons' => [
+                                    'update' => function ($url, $model, $key) {
+                                        return Html::a('<span class="fas fa-pen"></span> '. Yii::t('admin', 'Edit') , $url,['class'=>'btn btn-info btn-sm']);
+                                    },
+                                    'delete' => function ($url, $model, $key) {
+                                        return Html::a('<span class="fas fa-trash"></span> '. Yii::t('admin', 'Delete'), $url,['class'=>'btn btn-danger btn-sm']);
+                                    },
+                                ]
                             ],
                         ],
 

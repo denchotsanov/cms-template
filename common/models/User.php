@@ -272,12 +272,12 @@ class User extends ActiveRecord implements IdentityInterface
     public function getHtmlStatusList()
     {
         return [
-            self::STATUS_DELETED => '<span class="label label-danger">Denied</span>',
-            self::STATUS_PENDING => '<span class="label label-warning">Pending</span>',
-            self::STATUS_BANED =>'<span class="label label-warning">Banned</span>',
-            self::STATUS_LOCKED =>'<span class="label label-warning">Locked</span>',
-            self::STATUS_PASSWORD_RECOVER =>'<span class="label label-warning">Password Recovery</span>',
-            self::STATUS_ACTIVE => '<span class="label label-success">Active</span>',
+            self::STATUS_DELETED => '<span class="badge badge-danger">Denied</span>',
+            self::STATUS_PENDING => '<span class="badge badge-warning">Pending</span>',
+            self::STATUS_BANED =>'<span class="badge badge-warning">Banned</span>',
+            self::STATUS_LOCKED =>'<span class="badge badge-warning">Locked</span>',
+            self::STATUS_PASSWORD_RECOVER =>'<span class="badge badge-warning">Password Recovery</span>',
+            self::STATUS_ACTIVE => '<span class="badge badge-success">Active</span>',
         ];
     }
 
