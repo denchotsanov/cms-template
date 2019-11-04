@@ -1,7 +1,0 @@
-{
-  "author": "Dencho Tsanov <tsanov.dencho@gmail.com>",
-  "license": "MIT",
-  "dependencies": {
-    "admin-lte": "^3.0.0-rc.6"
-  }
-}
