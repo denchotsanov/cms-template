@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c46171cca589e24d81445d83e0a78912",
+    "content-hash": "b8ddcc66da3f397d21808f58d7d674c1",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -307,6 +307,21 @@
             "license": [
                 "MIT"
             ]
+        },
+        {
+            "name": "bower-asset/flag-icon-css",
+            "version": "3.4.4",
+            "source": {
+                "type": "git",
+                "url": "git@github.com:lipis/flag-icon-css.git",
+                "reference": "1b0d2f6eb78ee1cecbcce0c63ab106aa51d044d6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/lipis/flag-icon-css/zipball/1b0d2f6eb78ee1cecbcce0c63ab106aa51d044d6",
+                "reference": "1b0d2f6eb78ee1cecbcce0c63ab106aa51d044d6"
+            },
+            "type": "bower-asset"
         },
         {
             "name": "bower-asset/inputmask",
@@ -1626,16 +1641,16 @@
         },
         {
             "name": "yiisoft/yii2-authclient",
-            "version": "2.2.4",
+            "version": "2.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-authclient.git",
-                "reference": "0e9efe86cb1e24fbb235fea32ebd86fa0625bd00"
+                "reference": "32639b988519419b5138e485f4d0a7869ec76f49"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/0e9efe86cb1e24fbb235fea32ebd86fa0625bd00",
-                "reference": "0e9efe86cb1e24fbb235fea32ebd86fa0625bd00",
+                "url": "https://api.github.com/repos/yiisoft/yii2-authclient/zipball/32639b988519419b5138e485f4d0a7869ec76f49",
+                "reference": "32639b988519419b5138e485f4d0a7869ec76f49",
                 "shasum": ""
             },
             "require": {
@@ -1646,7 +1661,11 @@
                 "phpunit/phpunit": "4.8.27|~5.7.21|^6.2"
             },
             "suggest": {
-                "spomky-labs/jose": "required for JWS,JWT or JWK related flows like OpenIDConnect"
+                "web-token/jwt-checker": "required for JWS, JWT or JWK related flows like OpenIDConnect",
+                "web-token/jwt-signature": "required for JWS, JWT or JWK related flows like OpenIDConnect",
+                "web-token/jwt-signature-algorithm-ecdsa": "required for JWS, JWT or JWK related flows like OpenIDConnect",
+                "web-token/jwt-signature-algorithm-hmac": "required for JWS, JWT or JWK related flows like OpenIDConnect",
+                "web-token/jwt-signature-algorithm-rsa": "required for JWS, JWT or JWK related flows like OpenIDConnect"
             },
             "type": "yii2-extension",
             "extra": {
@@ -1678,7 +1697,7 @@
                 "oauth",
                 "yii2"
             ],
-            "time": "2019-07-02T10:42:21+00:00"
+            "time": "2019-11-05T14:21:14+00:00"
         },
         {
             "name": "yiisoft/yii2-bootstrap",
@@ -2192,16 +2211,16 @@
         },
         {
             "name": "yiisoft/yii2-debug",
-            "version": "2.1.10",
+            "version": "2.1.11",
             "source": {
                 "type": "git",
                 "url": "https://github.com/yiisoft/yii2-debug.git",
-                "reference": "4f1a9f0fe8c565203b9243613b0a81a46dde27e7"
+                "reference": "72e7c6c454028366f14ccef5a93d6c18fc9dcd63"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/4f1a9f0fe8c565203b9243613b0a81a46dde27e7",
-                "reference": "4f1a9f0fe8c565203b9243613b0a81a46dde27e7",
+                "url": "https://api.github.com/repos/yiisoft/yii2-debug/zipball/72e7c6c454028366f14ccef5a93d6c18fc9dcd63",
+                "reference": "72e7c6c454028366f14ccef5a93d6c18fc9dcd63",
                 "shasum": ""
             },
             "require": {
@@ -2246,7 +2265,7 @@
                 "debugger",
                 "yii2"
             ],
-            "time": "2019-10-22T10:36:02+00:00"
+            "time": "2019-11-05T13:56:49+00:00"
         },
         {
             "name": "yiisoft/yii2-gii",

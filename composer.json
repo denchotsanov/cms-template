@@ -21,7 +21,8 @@
         "bower-asset/angular-aria": "^1.7.7",
         "bower-asset/angular-animate": "^1.7.7",
         "bower-asset/angular-messages": "^1.7.7",
-        "bower-asset/angular-sanitize": "^1.7.7"
+        "bower-asset/angular-sanitize": "^1.7.7",
+        "bower-asset/flag-icon-css": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

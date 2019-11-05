@@ -2,6 +2,8 @@
 
 namespace backend\controllers;
 
+use backend\models\LanguageForm;
+use backend\models\LanguageSearch;
 use denchotsanov\rbac\filter\AccessControl;
 use Yii;
 use yii\filters\VerbFilter;
@@ -29,7 +31,23 @@ class TranslateController extends MainController
     }
 
     public function actionIndex(){
-        return $this->render('index');
+        $searchModel = new LanguageSearch();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+
+        return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
     }
 
+
+    public function actionNewLanguage(){
+        $model = new LanguageForm();
+
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['index']);
+        }
+        return $this->renderAjax('newLanguage',['model'=>$model]);
+
+    }
 }

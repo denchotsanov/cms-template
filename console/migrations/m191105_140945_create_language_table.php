@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Language;
 use yii\db\Migration;
 
 /**
@@ -14,18 +15,20 @@ class m191105_140945_create_language_table extends Migration
     {
         $this->createTable('{{%language}}', [
             'id' => $this->primaryKey(),
-            'code' => $this->char(2)->notNull(),
+            'code' => $this->char(2)->notNull()->unique(),
             'name' =>$this->string(15)->notNull(),
+            'flag' => $this->string(6)->notNull(),
+            'status'=> $this->integer()->notNull()->defaultValue(Language::STATUS_ACTIVE),
             'created_at'=> $this->integer()->notNull(),
             'updated_at'=> $this->integer()->notNull(),
-            'status'=> $this->integer()->notNull(),
         ]);
 
         $language = new Language();
 
         $language->code = 'en';
         $language->name = 'English';
-        $language->status = \frontend\models\Language::STATUS_ACTIVE;
+        $language->flag = 'gb-eng';
+        $language->status = Language::STATUS_ACTIVE;
         $language->save();
 
     }
