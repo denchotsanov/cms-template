@@ -1,7 +1,7 @@
 <?php
 
 use common\models\User;
-use yii\bootstrap\ActiveForm;
+use yii\bootstrap4\ActiveForm;
 
 
 /* @var $this yii\web\View */
@@ -12,9 +12,6 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('backend', 'Users'), 'url' =
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="user-create">
-    <div class="modal-header">
-        <h3 class="modal-title" id="modal-title">I'm a modal!</h3>
-    </div>
     <div class="modal-body" id="modal-body">
 
         <?php $form = ActiveForm::begin(); ?>

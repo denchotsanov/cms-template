@@ -3,6 +3,7 @@
 use common\models\User;
 use yii\bootstrap4\Html;
 use yii\grid\GridView;
+use yii\helpers\Url;
 use yii\widgets\Pjax;
 
 /* @var $this yii\web\View */
@@ -53,10 +54,12 @@ $this->params['breadcrumbs'][] = $this->title;
                                 'template' => '{update}{delete}',
                                 'buttons' => [
                                     'update' => function ($url, $model, $key) {
-                                        return Html::a('<span class="fas fa-pen"></span> '. Yii::t('admin', 'Edit') , $url,['class'=>'btn btn-info btn-sm']);
+                                        return Html::a('<span class="fas fa-pen"></span> ' . Yii::t('admin', 'Edit'),
+                                            $url, ['class' => 'btn btn-info btn-sm']);
                                     },
                                     'delete' => function ($url, $model, $key) {
-                                        return Html::a('<span class="fas fa-trash"></span> '. Yii::t('admin', 'Delete'), $url,['class'=>'btn btn-danger btn-sm']);
+                                        return Html::a('<span class="fas fa-trash"></span> ' . Yii::t('admin',
+                                                'Delete'), $url, ['class' => 'btn btn-danger btn-sm']);
                                     },
                                 ]
                             ],
@@ -71,9 +74,12 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card card-lime card-outline card-tabs">
                 <div class="card-body">
                     <div class="row">
-                        <a href="#" class="btn btn-app">
-                            <i class="fas fa-plus"></i>Create
-                        </a>
+                        <?= Html::button('<i class="fas fa-plus"></i>Create',
+                            [
+                                'value' => Url::to(['user/create']),
+                                'title' => 'Create New User',
+                                'class' => 'showModalButton btn btn-app'
+                            ]); ?>
                     </div>
                     <div class="row">
 

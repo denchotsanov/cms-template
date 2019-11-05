@@ -15,12 +15,16 @@ class AppAsset extends AssetBundle
         'css/site.css',
         '//fonts.googleapis.com/css?family=Ubuntu:300,400,400i,700',
     ];
-    public $js = [];
+    public $js = [
+        'js/app.js',
+        'controllers/Users,js',
+        'controllers/Main,js',
+    ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
         'backend\assets\FlagsAsset',
+        'backend\assets\AngularAsset',
         'denchotsanov\assets\assets\AdminAsset'
-
     ];
 }

@@ -89,7 +89,6 @@ class UserController extends MainController
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->renderAjax('create',['model'=>$model]);
     }
 
