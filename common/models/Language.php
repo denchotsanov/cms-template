@@ -44,4 +44,15 @@ class Language extends ActiveRecord
             'status' => Yii::t('admin', 'Status'),
         ];
     }
+
+
+    /**
+     *  Return all active Languages
+     *
+     * @return array|ActiveRecord[]
+     */
+    public static function getLanguages(){
+        return Language::find()->where(['status'=>self::STATUS_ACTIVE])->all();
+    }
+
 }
