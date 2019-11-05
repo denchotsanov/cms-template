@@ -56,6 +56,11 @@ $temp = [
         ]
     ],
     [
+        'label'=>'Translate',
+        'icon' => 'fas fa-language',
+        'url' => ['/translate'],
+    ],
+    [
         'label' => 'Sing out',
         'url' => ['/logout'],
         'visible' => !Yii::$app->user->isGuest,
