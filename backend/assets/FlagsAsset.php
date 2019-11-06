@@ -1,10 +1,5 @@
 <?php
-/**
- * User: dencho
- */
-
 namespace backend\assets;
-
 
 use yii\web\AssetBundle;
 
@@ -14,5 +9,4 @@ class FlagsAsset extends AssetBundle
     public $css = [
         'css/flag-icon.css'
     ];
-
 }
