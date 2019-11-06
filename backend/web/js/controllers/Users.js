@@ -1,14 +1,14 @@
-app.controller('UsersController', function ($scope, $timeout, $window, $modal) {
+app.controller('UsersController', function ($scope, $timeout, $window, $uibМodal) {
 
     $scope.openPopup = function () {
-        console.log(webroot + '/user/create');
-        $modal.open({
+        console.log( webroot + '/user/create');
+         $uibModal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
-            templateUrl: webroot + '/user/create',
-            controller: 'CreateUserController'
+            // templateUrl: webroot + '/user/create',
+            controller: 'CreateUserController',
+            size: 'sm'
         });
-
 
     };
 });
