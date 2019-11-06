@@ -18,6 +18,8 @@ class AngularAsset extends AssetBundle
         'angular-messages/angular-messages.js',
         'angular-sanitize/angular-sanitize.js',
     ];
-    public $depends = [];
+    public $depends = [
+
+    ];
 
 }

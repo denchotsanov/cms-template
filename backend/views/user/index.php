@@ -64,7 +64,6 @@ $this->params['breadcrumbs'][] = $this->title;
                                 ]
                             ],
                         ],
-
                     ]); ?>
                     <?php Pjax::end(); ?>
                 </div>
@@ -77,15 +76,9 @@ $this->params['breadcrumbs'][] = $this->title;
                         <a href="#" ng-click="openPopup()" class="btn btn-app">
                             <i class="fas fa-plus"></i>Create
                         </a>
-
-                    </div>
-                    <div class="row">
-
                     </div>
                 </div>
             </div>
-
-
         </div>
     </div>
 </div>

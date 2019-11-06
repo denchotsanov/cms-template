@@ -13,9 +13,13 @@ use yii\web\View;
 
 class AngularUIAsset extends AssetBundle
 {
-    public $sourcePath = '@vendor';
+    public $sourcePath = '@vendor/npm-asset';
     public $js = [
-        'angular-ui/bootstrap/ui-bootstrap-tpls.min.js',
+        'ui-bootstrap4/dist/ui-bootstrap.js',
+        'ui-bootstrap4/dist/ui-bootstrap-tpls.js',
         ];
+    public $css = [
+        'ui-bootstrap4/dist/ui-bootstrap-csp.css',
+    ];
 
 }

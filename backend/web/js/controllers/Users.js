@@ -1,12 +1,15 @@
 app.controller('UsersController', function ($scope, $timeout, $window, $modal) {
 
     $scope.openPopup = function () {
+        console.log(webroot + '/user/create');
         $modal.open({
             ariaLabelledBy: 'modal-title',
             ariaDescribedBy: 'modal-body',
             templateUrl: webroot + '/user/create',
             controller: 'CreateUserController'
         });
+
+
     };
 });
 
@@ -22,7 +25,6 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
     $scope.ok = function () {
         $http({
             method: 'POST',
-
             url: webroot + '/api/create-user',
             data: $scope.userForm,
         }).then(function successCallback(response) {
@@ -39,7 +41,6 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
     };
     $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
-
     };
 });
 
