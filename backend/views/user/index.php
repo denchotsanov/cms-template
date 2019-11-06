@@ -14,7 +14,7 @@ use yii\widgets\Pjax;
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="user-index">
+<div class="user-index" ng-controller="UsersController">
     <div class="row">
         <div class="col-9">
             <div class="card card-orange card-outline card-tabs">
@@ -74,12 +74,10 @@ $this->params['breadcrumbs'][] = $this->title;
             <div class="card card-lime card-outline card-tabs">
                 <div class="card-body">
                     <div class="row">
-                        <?= Html::button('<i class="fas fa-plus"></i>Create',
-                            [
-                                'value' => Url::to(['user/create']),
-                                'title' => 'Create New User',
-                                'class' => 'showModalButton btn btn-app'
-                            ]); ?>
+                        <a href="#" ng-click="openPopup()" class="btn btn-app">
+                            <i class="fas fa-plus"></i>Create
+                        </a>
+
                     </div>
                     <div class="row">
 

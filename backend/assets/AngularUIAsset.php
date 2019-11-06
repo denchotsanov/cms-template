@@ -17,8 +17,5 @@ class AngularUIAsset extends AssetBundle
     public $js = [
         'angular-ui/bootstrap/ui-bootstrap-tpls.min.js',
         ];
-    public $jsOptions = [
-        'position' => View::POS_HEAD,
-    ];
 
 }

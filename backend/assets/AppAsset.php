@@ -17,14 +17,15 @@ class AppAsset extends AssetBundle
     ];
     public $js = [
         'js/app.js',
-        'controllers/Users,js',
-        'controllers/Main,js',
+        'js/controllers/Users.js',
+        'js/controllers/Main.js',
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
         'backend\assets\FlagsAsset',
         'backend\assets\AngularAsset',
+        'backend\assets\AngularUIAsset',
         'denchotsanov\assets\assets\AdminAsset'
     ];
 }

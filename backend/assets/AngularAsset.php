@@ -15,9 +15,9 @@ class AngularAsset extends AssetBundle
         'angular-material/angular-material.js',
         'angular-animate/angular-animate.js',
         'angular-aria/angular-aria.js',
+        'angular-messages/angular-messages.js',
+        'angular-sanitize/angular-sanitize.js',
     ];
-    public $depends = [
-        'backend\assets\AngularUIAsset',
-    ];
+    public $depends = [];
 
 }
