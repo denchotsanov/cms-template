@@ -45,8 +45,5 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
 
 app.controller('UpdateUserController', function ($scope,$window) {
     $scope.user = $window.user;
-
     $scope.openTab = 1;
-
-
 });
