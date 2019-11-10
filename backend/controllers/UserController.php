@@ -3,12 +3,14 @@
 namespace backend\controllers;
 
 use backend\models\UserForm;
+use backend\models\UserStatusUpdate;
 use denchotsanov\rbac\filter\AccessControl;
 use Yii;
 use backend\models\User;
 use backend\models\UserSearch;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\web\Response;
 
 
 /**
@@ -65,9 +67,12 @@ class UserController extends MainController
         $model =  $this->findModel($id);
 
         $userModel= [
+            'id' => $model->id,
             'username' => $model->username,
             'email'=> $model->email,
             'avatar' => $model->getUserAvatarUrl(),
+            'blockedUser' => ($model->status === User::STATUS_BANED || $model->status === User::STATUS_LOCKED),
+
         ];
 
         return $this->render('view', [
@@ -106,6 +111,31 @@ class UserController extends MainController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
+    }
+
+    public function actionStatusUpdate(){
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        $model = new UserStatusUpdate();
+        $require = json_decode(Yii::$app->request->getRawBody(),true);
+        $model->load($require);
+        if ($model->update()){
+            return ['seccess'=>'OK'];
+        } else {
+            return ['seccess'=>'NOK'];
+        }
+
+    }
+
+    public function actionCreateUser(){
+        $model = new UserForm();
+        $require = json_decode(Yii::$app->request->getRawBody(),true);
+        $model->setAttributes($require);
+        if($model->validate()) {
+            return $model->createNewUser();
+        } else {
+            return $model;
+        }
     }
 
     /**

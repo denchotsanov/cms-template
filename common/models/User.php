@@ -27,7 +27,6 @@ use yii\web\Response;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_PENDING = 1;
     const STATUS_BANED = 2;
     const STATUS_LOCKED = 3;
     const STATUS_PASSWORD_RECOVER = 4;
@@ -66,9 +65,8 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_PENDING],
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [
-                    self::STATUS_PENDING,
                     self::STATUS_ACTIVE,
                     self::STATUS_BANED,
                     self::STATUS_LOCKED,
@@ -262,10 +260,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             self::STATUS_DELETED => 'Denied',
-            self::STATUS_PENDING => 'Pending',
             self::STATUS_BANED =>'Banned',
             self::STATUS_LOCKED =>'Locked',
             self::STATUS_PASSWORD_RECOVER =>'Password Recovery',
+            self::STATUS_INACTIVE=> 'Pending',
             self::STATUS_ACTIVE => 'Active',
         ];
     }
@@ -273,10 +271,10 @@ class User extends ActiveRecord implements IdentityInterface
     {
         return [
             self::STATUS_DELETED => '<span class="badge badge-danger">Denied</span>',
-            self::STATUS_PENDING => '<span class="badge badge-warning">Pending</span>',
             self::STATUS_BANED =>'<span class="badge badge-warning">Banned</span>',
             self::STATUS_LOCKED =>'<span class="badge badge-warning">Locked</span>',
             self::STATUS_PASSWORD_RECOVER =>'<span class="badge badge-warning">Password Recovery</span>',
+            self::STATUS_INACTIVE => '<span class="badge badge-warning">Pending</span>',
             self::STATUS_ACTIVE => '<span class="badge badge-success">Active</span>',
         ];
     }
@@ -287,8 +285,6 @@ class User extends ActiveRecord implements IdentityInterface
     public function getHtmlStatusLabel(){
         return $this->htmlStatusList[$this->status];
     }
-
-
 
     public function getUserAvatarUrl(){
 

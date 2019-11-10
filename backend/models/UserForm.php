@@ -76,7 +76,6 @@ class UserForm extends Model
         }
     }
 
-
     public function getAllRole()
     {
         $roleResult = [];

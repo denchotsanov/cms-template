@@ -34,7 +34,8 @@ JS
                         <img class="profile-user-img img-responsive img-circle" ng-src="{{user.avatar}}" alt="User profile picture">
                         <h3 class="profile-username text-center">{{user.email}}</h3>
                         <p class="text-muted text-center">{{user.username}}</p>
-                        <a href="#" class="btn btn-danger btn-block "><b>Block User</b></a>
+                        <a ng-if="!user.blockedUser" href="#" ng-click="blockUser(user.id)" class="btn btn-danger btn-block "><b><?php echo Yii::t('admin', 'Block User'); ?></b></a>
+                        <a ng-if="user.blockedUser" href="#" ng-click="blockUser(user.id)" class="btn btn-success btn-block "><b><?php echo Yii::t('admin', 'Restore User'); ?></b></a>
                         <a href="#" class="btn btn-primary btn-block "><b>Reset Password</b></a>
                     </div>
                 </div>
