@@ -1,19 +1,16 @@
-app.controller('UsersController', function ($scope, $timeout, $window, $uibМodal) {
-
+app.controller('UsersController', function ($scope, $timeout, $window, $uibModal) {
     $scope.openPopup = function () {
-        console.log( webroot + '/user/create');
-         $uibModal.open({
-            ariaLabelledBy: 'modal-title',
-            ariaDescribedBy: 'modal-body',
-            // templateUrl: webroot + '/user/create',
+        $uibModal.open({
             controller: 'CreateUserController',
-            size: 'sm'
+            templateUrl: webroot + '/user/create',
+            parent: angular.element(document.body),
+            clickOutsideToClose: false,
+            escapeToClose: false,
         });
-
     };
 });
 
-app.controller('CreateUserController', function ($modalInstance,$window, $scope, $http) {
+app.controller('CreateUserController', function ($window, $scope, $http, $uibModalInstance) {
 
     $scope.userForm = {
         email:'',
@@ -40,10 +37,9 @@ app.controller('CreateUserController', function ($modalInstance,$window, $scope,
 
     };
     $scope.cancel = function () {
-        $modalInstance.dismiss('cancel');
+        $uibModalInstance.close();
     };
 });
-
 app.controller('UpdateUserController', function ($scope,$window) {
     $scope.user = $window.user;
     $scope.openTab = 1;
