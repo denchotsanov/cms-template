@@ -8,10 +8,8 @@
 
 namespace backend\models;
 
+use common\models\User as CommonUser;
 
-use Yii;
-
-class User extends \common\models\User
-{
+class User extends CommonUser {
 
 }

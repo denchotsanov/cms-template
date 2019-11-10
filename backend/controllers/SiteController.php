@@ -27,6 +27,11 @@ class SiteController extends MainController
                     [
                         'actions' => ['login', 'error','signup','request-password-reset'],
                         'allow' => true,
+
+                    ],
+                    [
+                        'allow' => true,
+                        'roles' => ['Administrator'],
                     ],
                 ],
             ],

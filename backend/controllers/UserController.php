@@ -86,12 +86,11 @@ class UserController extends MainController
     {
         $model = new UserForm();
 
-//        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-//            return $this->redirect(['view', 'id' => $model->id]);
-//        }
+        if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            return $this->redirect(['view', 'id' => $model->id]);
+        }
         return $this->renderAjax('create',['model'=>$model]);
     }
-
 
     /**
      * Deletes an existing User model.
@@ -107,13 +106,6 @@ class UserController extends MainController
         $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
-    }
-
-    public function actionProfile($id){
-        $model =  $this->findModel($id);
-        return $this->render('profile', [
-            'model' =>$model,
-        ]);
     }
 
     /**
