@@ -5,6 +5,7 @@ namespace backend\controllers;
 use backend\models\UserForm;
 use backend\models\UserStatusUpdate;
 use denchotsanov\rbac\filter\AccessControl;
+use denchotsanov\rbac\models\AssignmentModel;
 use Yii;
 use backend\models\User;
 use backend\models\UserSearch;
@@ -65,7 +66,7 @@ class UserController extends MainController
     public function actionUpdate($id)
     {
         $model =  $this->findModel($id);
-
+        $modelAssigment = $this->findAssigment($id);
         $userModel= [
             'id' => $model->id,
             'username' => $model->username,
@@ -77,6 +78,7 @@ class UserController extends MainController
 
         return $this->render('view', [
             'model' =>$model,
+            'modelAssigment'=> $modelAssigment,
             'user' =>$userModel,
         ]);
     }
@@ -138,6 +140,8 @@ class UserController extends MainController
         }
     }
 
+
+
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -152,5 +156,13 @@ class UserController extends MainController
         }
 
         throw new NotFoundHttpException(Yii::t('backend', 'The requested page does not exist.'));
+    }
+
+    public function findAssigment($id){
+        $userClass = Yii::$app->user->identityClass;
+        if (($userModel = $userClass::findIdentity($id)) === null) {
+            throw new NotFoundHttpException(Yii::t('admin', 'The requested page does not exist.'));
+        }
+        return new AssignmentModel($userModel);
     }
 }

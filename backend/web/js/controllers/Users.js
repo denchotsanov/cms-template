@@ -66,5 +66,9 @@ app.controller('UpdateUserController', function ($scope,$window,$http) {
 
 
     }
+    $scope.$watch('openTab', function ($new) {
+        if($new == 2){
+        }
+    });
 
 });

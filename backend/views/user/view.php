@@ -1,5 +1,7 @@
 <?php
 
+use yii\bootstrap4\Html;
+use yii\helpers\Json;
 use yii\helpers\Url;
 use yii\web\View;
 
@@ -15,13 +17,12 @@ $directoryAsset = Url::to('@web');
 
 $profile = $model;
 
-$this->registerJs( <<<JS
-    
-JS
-    ,View::POS_READY);
+
 ?>
 <script>
     window.user = <?php echo json_encode($user); ?>;
+    window.opts = <?php echo Json::htmlEncode(['items' => $modelAssigment->getItems()]); ?>;
+
 </script>
 
 <section ng-controller="UpdateUserController">
@@ -49,7 +50,7 @@ JS
                 <div class="card-header p-0 pt-1 border-bottom-0">
                     <ul class="nav nav-tabs">
                         <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 1 }" href="#" ng-click="openTab = 1">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 2 }" href="#" ng-click="openTab = 2">Avatar</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 2 }" href="#" ng-click="openTab = 2">Assigment</a></li>
                         <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 3 }" href="#" ng-click="openTab = 3">Settings</a></li>
                         <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 4 }" href="#" ng-click="openTab = 4">Activity</a></li>
                         <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 5 }" href="#" ng-click="openTab = 5">Timeline</a></li>
@@ -110,7 +111,41 @@ JS
                             </form>
                         </div>
                         <!-- /.tab-pane -->
-                        <div class="tab-pane" id="avatar" ng-class="{'active' : openTab == 2 }"></div>
+                        <div class="tab-pane" id="avatar" ng-class="{'active' : openTab == 2 }">
+                            <div class="assignment-index">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <input class="form-control search" data-target="available"
+                                               placeholder="<?php echo Yii::t('admin', 'Search for available'); ?>">
+                                        <br/>
+                                        <select multiple size="20" class="form-control list" data-target="available"></select>
+                                    </div>
+                                    <div class="col-lg-2">
+                                        <div class="move-buttons">
+                                            <br><br>
+                                            <?php echo Html::a('&gt;&gt;',  ['assign-assigment', 'id' => $modelAssigment->userId], [
+                                                'class' => 'btn btn-success btn-assign',
+                                                'data-target' => 'available',
+                                                'title' => Yii::t('admin', 'Assign'),
+                                            ]); ?>
+                                            <br/><br/>
+                                            <?php echo Html::a('&lt;&lt;',  ['remove-assigment', 'id' => $modelAssigment->userId], [
+                                                'class' => 'btn btn-danger btn-assign',
+                                                'data-target' => 'assigned',
+                                                'title' => Yii::t('admin', 'Remove'),
+                                            ]); ?>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-5">
+                                        <input class="form-control search" data-target="assigned"
+                                               placeholder="<?php echo Yii::t('admin', 'Search for assigned'); ?>">
+                                        <br/>
+                                        <select multiple size="20" class="form-control list" data-target="assigned"></select>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="avatar1" ng-class="{'active' : openTab == 3 }"></div>
                         <!-- /.tab-pane -->
