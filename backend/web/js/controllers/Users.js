@@ -39,10 +39,17 @@ app.controller('CreateUserController', function ($window, $scope, $http, $uibMod
         $uibModalInstance.close();
     };
 });
-app.controller('UpdateUserController', function ($scope,$window,$http) {
-    $scope.user = $window.user;
-
+app.controller('UpdateUserController', function ($scope,$window,$http,$timeout) {
     $scope.openTab = 1;
+
+    // $timeout(function () {
+        $scope.user = $window.user;
+    // },0);
+
+    $scope.$watch('openTab', function ($new) {
+        if($new == 2){
+        }
+    });
 
     $scope.blockUser = function (id) {
         var status = 3;
@@ -66,9 +73,6 @@ app.controller('UpdateUserController', function ($scope,$window,$http) {
 
 
     }
-    $scope.$watch('openTab', function ($new) {
-        if($new == 2){
-        }
-    });
+
 
 });

@@ -1,34 +1,24 @@
 <?php
-
+use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
-use yii\web\View;
-
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
-/* @var $profile common\models\UserProfile */
 
 $this->title = 'User profile: '.$model->email;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->email;
 $directoryAsset = Url::to('@web');
-
-$profile = $model;
-
-
 ?>
 <script>
-    window.user = <?php echo json_encode($user); ?>;
+    window.user = <?php echo Json::htmlEncode($user); ?>;
     window.opts = <?php echo Json::htmlEncode(['items' => $modelAssigment->getItems()]); ?>;
-
 </script>
-
 <section ng-controller="UpdateUserController">
     <div class="row">
         <div class="col-sm-3">
-            <!-- Profile Image -->
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
@@ -40,11 +30,8 @@ $profile = $model;
                         <a href="#" class="btn btn-primary btn-block "><b>Reset Password</b></a>
                     </div>
                 </div>
-                <!-- /.box-body -->
             </div>
-            <!-- /.box -->
         </div>
-        <!-- /.col -->
         <div class="col-sm-9">
             <div class="card card-primary card-outline card-tabs">
                 <div class="card-header p-0 pt-1 border-bottom-0">
@@ -59,56 +46,10 @@ $profile = $model;
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane" id="settings" ng-class="{'active' : openTab == 1 }">
-                            <form class="form-horizontal" >
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputEmail" class="col-sm-2 control-label">Email</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="email" class="form-control" id="inputEmail" placeholder="Email">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName" class="col-sm-2 control-label">Name</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputName" placeholder="Name">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputExperience" class="col-sm-2 control-label">Experience</label>
-
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputSkills" class="col-sm-2 control-label">Skills</label>
-
-                                    <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="inputSkills" placeholder="Skills">
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="col-sm-offset-2 col-sm-10">
-                                        <button type="submit" class="btn btn-danger">Submit</button>
-                                    </div>
-                                </div>
-                            </form>
+                            <?php $form = ActiveForm::begin(); ?>
+                                <?php echo $form->field($model, 'email')->textInput(['ng-model'=>'user.email']); ?>
+                                <?php echo $form->field($model, 'username')->textInput(['ng-model'=>'user.name']); ?>
+                            <?php ActiveForm::end(); ?>
                         </div>
                         <!-- /.tab-pane -->
                         <div class="tab-pane" id="avatar" ng-class="{'active' : openTab == 2 }">

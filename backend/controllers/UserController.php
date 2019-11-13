@@ -65,17 +65,18 @@ class UserController extends MainController
      */
     public function actionUpdate($id)
     {
-        $model =  $this->findModel($id);
+        $model = $this->findModel($id);
+
         $modelAssigment = $this->findAssigment($id);
         $userModel= [
             'id' => $model->id,
             'username' => $model->username,
             'email'=> $model->email,
             'avatar' => $model->getUserAvatarUrl(),
+            'name' => $model->getProfile(),
             'blockedUser' => ($model->status === User::STATUS_BANED || $model->status === User::STATUS_LOCKED),
 
         ];
-
         return $this->render('view', [
             'model' =>$model,
             'modelAssigment'=> $modelAssigment,
@@ -140,8 +141,6 @@ class UserController extends MainController
         }
     }
 
-
-
     /**
      * Finds the User model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
@@ -160,9 +159,10 @@ class UserController extends MainController
 
     public function findAssigment($id){
         $userClass = Yii::$app->user->identityClass;
-        if (($userModel = $userClass::findIdentity($id)) === null) {
-            throw new NotFoundHttpException(Yii::t('admin', 'The requested page does not exist.'));
+        if (($userModel = $userClass::findIdentity($id)) !== null) {
+            return new AssignmentModel($userModel);
         }
-        return new AssignmentModel($userModel);
+
+        throw new NotFoundHttpException(Yii::t('admin', 'The requested page does not exist.'));
     }
 }
