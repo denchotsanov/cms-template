@@ -4,6 +4,7 @@ namespace backend\controllers;
 
 use backend\models\UserForm;
 use backend\models\UserStatusUpdate;
+use common\models\Language;
 use denchotsanov\rbac\filter\AccessControl;
 use denchotsanov\rbac\models\AssignmentModel;
 use Yii;
@@ -32,6 +33,13 @@ class UserController extends MainController
                 'class' => VerbFilter::class,
                 'actions' => [
                     '*' => ['GET', 'POST'],
+                ],
+            ],
+            'contentNegotiator' => [
+                'class' => 'yii\filters\ContentNegotiator',
+                'only' => ['assign-assigment', 'remove-assigment'],
+                'formats' => [
+                    'application/json' => Response::FORMAT_JSON,
                 ],
             ],
         ];
@@ -68,24 +76,25 @@ class UserController extends MainController
         $model = $this->findModel($id);
         $modelAssigment = $this->findAssigment($id);
 
+        $language = Language::getLanguages();
         $userModel = [
             'id' => $model->id,
             'username' => $model->username,
             'email' => $model->email,
             'avatar' => $model->getUserAvatarUrl(),
-            'language' => '',
+            'language' => $model->getProfile()->exists() ? $model->getProfile()->language : 'en',
             'name' => $model->getProfile()->exists() ? $model->getProfile()->name : '',
             'blockedUser' => ($model->status === User::STATUS_BANED || $model->status === User::STATUS_LOCKED),
         ];
         return $this->render('view', [
             'model' => $model,
+            'language'=>$language,
             'modelAssigment' => $modelAssigment,
             'user' => $userModel,
         ]);
     }
 
     /**
-     *
      * Creates a new User model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
@@ -139,6 +148,38 @@ class UserController extends MainController
         } else {
             return $model;
         }
+    }
+
+    /**
+     * Assign items
+     *
+     * @param int $id
+     *
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function actionAssignAssigment(int $id)
+    {
+        $items = Yii::$app->getRequest()->post('items', []);
+        $assignmentModel = $this->findAssigment($id);
+        $assignmentModel->assign($items);
+        return $assignmentModel->getItems();
+    }
+
+    /**
+     * Remove items
+     *
+     * @param int $id
+     *
+     * @return array
+     * @throws NotFoundHttpException
+     */
+    public function actionRemoveAssigment(int $id)
+    {
+        $items = Yii::$app->getRequest()->post('items', []);
+        $assignmentModel = $this->findAssigment($id);
+        $assignmentModel->revoke($items);
+        return $assignmentModel->getItems();
     }
 
     /**

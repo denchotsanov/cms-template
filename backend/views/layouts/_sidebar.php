@@ -29,11 +29,6 @@ $temp = [
                 'icon' => 'far fa-circle',
             ],
             [
-                'label' => 'Assignment',
-                'url' => ['/rbac/assignment'],
-                'icon' => 'far fa-circle',
-            ],
-            [
                 'label' => 'Role',
                 'url' => ['/rbac/role'],
                 'icon' => 'far fa-circle',
@@ -91,7 +86,7 @@ $menuItems = ArrayHelper::merge($temp, Yii::$app->params['menuList']);
                 <img src="<?php echo Yii::$app->user->identity->userAvatarUrl; ?>" class="img-circle elevation-2" alt="User Image">
             </div>
             <div class="info">
-                <a href="<?php echo Url::to(['user/update/'.Yii::$app->user->id]); ?>" class="d-block"><?php echo Yii::$app->user->identity->email; ?></a>
+                <a href="<?php echo Url::to(['/user/update/'.Yii::$app->user->id]); ?>" class="d-block"><?php echo Yii::$app->user->identity->email; ?></a>
             </div>
         </div>
 

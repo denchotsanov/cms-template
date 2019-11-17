@@ -120,3 +120,12 @@ a.desc:after {
 .nav > li > form > button.logout:focus {
     outline: none;
 }
+
+.assignment-index .move-buttons {
+    position: relative;
+    width: 45px;
+    margin: 200px auto;
+}
+.assignment-index .move-buttons a{
+    margin:10px 0;
+}

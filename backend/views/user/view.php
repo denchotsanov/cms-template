@@ -1,20 +1,74 @@
 <?php
+
 use yii\bootstrap4\ActiveForm;
 use yii\bootstrap4\Html;
 use yii\helpers\Json;
 use yii\helpers\Url;
+use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\User */
+/* @var $language array */
+/* @var $modelAssigment denchotsanov\rbac\models\AssignmentModel */
 
-$this->title = 'User profile: '.$model->email;
+$this->title = 'User profile: ' . $model->email;
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $model->email;
 $directoryAsset = Url::to('@web');
+$opts = Json::htmlEncode(['items' => $modelAssigment->getItems()]);
+
+$this->registerJs("var _opts = $opts;", View::POS_BEGIN);
+
+$this->registerJs(<<<JS
+function updateItems(r) {
+    _opts.items.available = r.available;
+    _opts.items.assigned = r.assigned;
+    search('available');
+    search('assigned');
+}
+$('.btn-assign').click(function () {
+    var t = $(this);
+    var target = t.data('target');
+    var items = $('select.list[data-target="' + target + '"]').val();
+    if (items && items.length) {
+        $.post(t.attr('href'), {items: items}, function (r) {
+            updateItems(r);
+        });
+    }
+    return false;
+});
+$('.search[data-target]').keyup(function () {
+    search($(this).data('target'));
+});
+function search(target) {
+    var list = $('select.list[data-target="' + target + '"]');
+    list.html('');
+    var q = $('.search[data-target="' + target + '"]').val();
+
+    var groups = {
+        role: [$('<optgroup label="Roles">'), false],
+        permission: [$('<optgroup label="Permission">'), false],
+        route: [$('<optgroup label="Routes">'), false],
+    };
+    $.each(_opts.items[target], function (name, group) {
+        if (name.indexOf(q) >= 0) {
+            $('<option>').text(name).val(name).appendTo(groups[group][0]);
+            groups[group][1] = true;
+        }
+    });
+    $.each(groups, function () {
+        if (this[1]) {
+            list.append(this[0]);
+        }
+    });
+}
+search('available');
+search('assigned'); 
+JS
+);
 ?>
 <script>
     window.user = <?php echo Json::htmlEncode($user); ?>;
-    window.opts = <?php echo Json::htmlEncode(['items' => $modelAssigment->getItems()]); ?>;
 </script>
 <section ng-controller="UpdateUserController">
     <div class="row">
@@ -22,11 +76,14 @@ $directoryAsset = Url::to('@web');
             <div class="card card-primary card-outline">
                 <div class="card-body box-profile">
                     <div class="text-center">
-                        <img class="profile-user-img img-responsive img-circle" ng-src="{{user.avatar}}" alt="User profile picture">
+                        <img class="profile-user-img img-responsive img-circle" ng-src="{{user.avatar}}"
+                             alt="User profile picture">
                         <h3 class="profile-username text-center">{{user.email}}</h3>
                         <p class="text-muted text-center">{{user.username}}</p>
-                        <a ng-if="!user.blockedUser" href="#" ng-click="blockUser(user.id)" class="btn btn-danger btn-block "><b><?php echo Yii::t('admin', 'Block User'); ?></b></a>
-                        <a ng-if="user.blockedUser" href="#" ng-click="blockUser(user.id)" class="btn btn-success btn-block "><b><?php echo Yii::t('admin', 'Restore User'); ?></b></a>
+                        <a ng-if="!user.blockedUser" href="#" ng-click="blockUser(user.id)"
+                           class="btn btn-danger btn-block "><b><?php echo Yii::t('admin', 'Block User'); ?></b></a>
+                        <a ng-if="user.blockedUser" href="#" ng-click="blockUser(user.id)"
+                           class="btn btn-success btn-block "><b><?php echo Yii::t('admin', 'Restore User'); ?></b></a>
                         <a href="#" class="btn btn-primary btn-block "><b>Reset Password</b></a>
                     </div>
                 </div>
@@ -36,22 +93,28 @@ $directoryAsset = Url::to('@web');
             <div class="card card-primary card-outline card-tabs">
                 <div class="card-header p-0 pt-1 border-bottom-0">
                     <ul class="nav nav-tabs">
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 1 }" href="#" ng-click="openTab = 1">Profile</a></li>
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 2 }" href="#" ng-click="openTab = 2">Assigment</a></li>
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 3 }" href="#" ng-click="openTab = 3">Settings</a></li>
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 4 }" href="#" ng-click="openTab = 4">Activity</a></li>
-                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 5 }" href="#" ng-click="openTab = 5">Timeline</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 1 }" href="#"
+                                                ng-click="openTab = 1">Profile</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 2 }" href="#"
+                                                ng-click="openTab = 2">Assigment</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 3 }" href="#"
+                                                ng-click="openTab = 3">Settings</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 4 }" href="#"
+                                                ng-click="openTab = 4">Activity</a></li>
+                        <li class="nav-item"><a class="nav-link" ng-class="{'active' : openTab == 5 }" href="#"
+                                                ng-click="openTab = 5">Timeline</a></li>
                     </ul>
                 </div>
                 <div class="card-body">
                     <div class="tab-content">
                         <div class="tab-pane" id="settings" ng-class="{'active' : openTab == 1 }">
                             <?php $form = ActiveForm::begin(); ?>
-                                <?php echo $form->field($model, 'email')->textInput(['ng-model'=>'user.email']); ?>
-                                <?php echo $form->field($model, 'username')->textInput(['ng-model'=>'user.name']); ?>
+                            <?php echo $form->field($model, 'email')->textInput(['ng-model' => 'user.email']); ?>
+                            <?php echo $form->field($model, 'username')->textInput(['ng-model' => 'user.name']); ?>
+                            <?php echo $form->field($model, 'language')->dropDownList($language, ['ng-model' => 'user.language']); ?>
                             <?php ActiveForm::end(); ?>
                         </div>
-                        <!-- /.tab-pane -->
+
                         <div class="tab-pane" id="avatar" ng-class="{'active' : openTab == 2 }">
                             <div class="assignment-index">
                                 <div class="row">
@@ -63,38 +126,39 @@ $directoryAsset = Url::to('@web');
                                     </div>
                                     <div class="col-lg-2">
                                         <div class="move-buttons">
-                                            <br><br>
-                                            <?php echo Html::a('&gt;&gt;',  ['assign-assigment', 'id' => $modelAssigment->userId], [
-                                                'class' => 'btn btn-success btn-assign',
-                                                'data-target' => 'available',
-                                                'title' => Yii::t('admin', 'Assign'),
-                                            ]); ?>
-                                            <br/><br/>
-                                            <?php echo Html::a('&lt;&lt;',  ['remove-assigment', 'id' => $modelAssigment->userId], [
-                                                'class' => 'btn btn-danger btn-assign',
-                                                'data-target' => 'assigned',
-                                                'title' => Yii::t('admin', 'Remove'),
-                                            ]); ?>
+                                            <?php echo Html::a('&gt;&gt;',
+                                                ['assign-assigment', 'id' => $modelAssigment->userId], [
+                                                    'class' => 'btn btn-success btn-assign',
+                                                    'data-target' => 'available',
+                                                    'title' => Yii::t('admin', 'Assign'),
+                                                ]); ?>
+                                            <?php echo Html::a('&lt;&lt;',
+                                                ['remove-assigment', 'id' => $modelAssigment->userId], [
+                                                    'class' => 'btn btn-danger btn-assign',
+                                                    'data-target' => 'assigned',
+                                                    'title' => Yii::t('admin', 'Remove'),
+                                                ]); ?>
                                         </div>
                                     </div>
                                     <div class="col-lg-5">
                                         <input class="form-control search" data-target="assigned"
                                                placeholder="<?php echo Yii::t('admin', 'Search for assigned'); ?>">
                                         <br/>
-                                        <select multiple size="20" class="form-control list" data-target="assigned"></select>
+                                        <select multiple size="20" class="form-control list"
+                                                data-target="assigned"></select>
                                     </div>
                                 </div>
                             </div>
-
                         </div>
-                        <!-- /.tab-pane -->
+
                         <div class="tab-pane" id="avatar1" ng-class="{'active' : openTab == 3 }"></div>
-                        <!-- /.tab-pane -->
-                        <div class="tab-pane" id="activity" ng-class="{'active' : openTab == 4 }" >
+
+                        <div class="tab-pane" id="activity" ng-class="{'active' : openTab == 4 }">
                             <!-- Post -->
                             <div class="post">
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="<?= $directoryAsset ?>/img/user1-128x128.jpg" alt="user image">
+                                    <img class="img-circle img-bordered-sm"
+                                         src="<?= $directoryAsset ?>/img/user1-128x128.jpg" alt="user image">
                                     <span class="username">
                               <a href="#">Jonathan Burke Jr.</a>
                               <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -110,11 +174,14 @@ $directoryAsset = Url::to('@web');
                                     to Charlie Sheen fans.
                                 </p>
                                 <ul class="list-inline">
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i>
+                                            Share</a></li>
+                                    <li><a href="#" class="link-black text-sm"><i
+                                                    class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
                                     </li>
                                     <li class="pull-right">
-                                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+                                        <a href="#" class="link-black text-sm"><i
+                                                    class="fa fa-comments-o margin-r-5"></i> Comments
                                             (5)</a></li>
                                 </ul>
 
@@ -125,7 +192,8 @@ $directoryAsset = Url::to('@web');
                             <!-- Post -->
                             <div class="post clearfix">
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="<?= $directoryAsset ?>/img/user7-128x128.jpg" alt="User Image">
+                                    <img class="img-circle img-bordered-sm"
+                                         src="<?= $directoryAsset ?>/img/user7-128x128.jpg" alt="User Image">
                                     <span class="username">
                               <a href="#">Sarah Ross</a>
                               <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -147,7 +215,9 @@ $directoryAsset = Url::to('@web');
                                             <input class="form-control input-sm" placeholder="Response">
                                         </div>
                                         <div class="col-sm-3">
-                                            <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                                            <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">
+                                                Send
+                                            </button>
                                         </div>
                                     </div>
                                 </form>
@@ -157,7 +227,8 @@ $directoryAsset = Url::to('@web');
                             <!-- Post -->
                             <div class="post">
                                 <div class="user-block">
-                                    <img class="img-circle img-bordered-sm" src="<?= $directoryAsset ?>/img/user6-128x128.jpg" alt="User Image">
+                                    <img class="img-circle img-bordered-sm"
+                                         src="<?= $directoryAsset ?>/img/user6-128x128.jpg" alt="User Image">
                                     <span class="username">
                               <a href="#">Adam Jones</a>
                               <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
@@ -167,21 +238,26 @@ $directoryAsset = Url::to('@web');
                                 <!-- /.user-block -->
                                 <div class="row margin-bottom">
                                     <div class="col-sm-6">
-                                        <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo1.png" alt="Photo">
+                                        <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo1.png"
+                                             alt="Photo">
                                     </div>
                                     <!-- /.col -->
                                     <div class="col-sm-6">
                                         <div class="row">
                                             <div class="col-sm-6">
-                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo2.png" alt="Photo">
+                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo2.png"
+                                                     alt="Photo">
                                                 <br>
-                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo3.jpg" alt="Photo">
+                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo3.jpg"
+                                                     alt="Photo">
                                             </div>
                                             <!-- /.col -->
                                             <div class="col-sm-6">
-                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo4.jpg" alt="Photo">
+                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo4.jpg"
+                                                     alt="Photo">
                                                 <br>
-                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo1.png" alt="Photo">
+                                                <img class="img-responsive" src="<?= $directoryAsset ?>/img/photo1.png"
+                                                     alt="Photo">
                                             </div>
                                             <!-- /.col -->
                                         </div>
@@ -192,11 +268,14 @@ $directoryAsset = Url::to('@web');
                                 <!-- /.row -->
 
                                 <ul class="list-inline">
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
-                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                                    <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i>
+                                            Share</a></li>
+                                    <li><a href="#" class="link-black text-sm"><i
+                                                    class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
                                     </li>
                                     <li class="pull-right">
-                                        <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+                                        <a href="#" class="link-black text-sm"><i
+                                                    class="fa fa-comments-o margin-r-5"></i> Comments
                                             (5)</a></li>
                                 </ul>
 
@@ -204,7 +283,7 @@ $directoryAsset = Url::to('@web');
                             </div>
                             <!-- /.post -->
                         </div>
-                        <!-- /.tab-pane -->
+
                         <div class="tab-pane" id="timeline" ng-class="{'active' : openTab == 5 }">
                             <!-- The timeline -->
                             <ul class="timeline timeline-inverse">
@@ -244,7 +323,8 @@ $directoryAsset = Url::to('@web');
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
 
-                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
+                                        <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your
+                                            friend request
                                         </h3>
                                     </div>
                                 </li>
@@ -256,7 +336,8 @@ $directoryAsset = Url::to('@web');
                                     <div class="timeline-item">
                                         <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
 
-                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+                                        <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post
+                                        </h3>
 
                                         <div class="timeline-body">
                                             Take me to your leader!
@@ -299,15 +380,9 @@ $directoryAsset = Url::to('@web');
                                 </li>
                             </ul>
                         </div>
-                        <!-- /.tab-pane -->
-
                     </div>
-                    <!-- /.tab-content -->
                 </div>
-                <!-- /.nav-tabs-custom -->
             </div>
         </div>
-        <!-- /.col -->
     </div>
-    <!-- /.row -->
 </section>

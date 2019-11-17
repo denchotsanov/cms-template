@@ -20,7 +20,6 @@ class UserForm extends Model
     public $status = User::STATUS_INACTIVE;
     public $role;
 
-
     public function rules()
     {
         return [
@@ -34,10 +33,8 @@ class UserForm extends Model
                 'targetClass' => '\common\models\User',
                 'message' => 'This email address has already been taken.'
             ],
-
             ['password', 'required'],
             ['password', 'string', 'min' => 6],
-
             [
                 'status',
                 'in',
@@ -50,7 +47,6 @@ class UserForm extends Model
                     User::STATUS_PASSWORD_RECOVER
                 ]
             ],
-
             [['role', 'success'], 'safe'],
         ];
     }

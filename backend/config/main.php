@@ -62,7 +62,6 @@ return [
                 '<controller:[\w-]+>/<action:[\w-]+>/<id:\d+>' => '<controller>/<action>',
             ],
         ],
-
     ],
     'params' => $params,
 ];
