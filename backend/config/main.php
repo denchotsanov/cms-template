@@ -18,7 +18,10 @@ return [
     'basePath' => dirname(__DIR__),
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
-    'modules' => [],
+    'modules' => [
+        'rbac'=>[
+        ]
+    ],
     'components' => [
         'request' => [
             'csrfParam' => '_csrf-backend',
