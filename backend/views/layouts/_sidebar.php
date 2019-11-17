@@ -31,13 +31,11 @@ $menuItems = Yii::$app->params['menuList'];
 
         </div>
         <nav class="mt-2">
-            <?php try {
-                echo Menu::widget([
-                    'items' => $menuItems
-                ]);
-            } catch (Exception $e) {
-
-            } ?>
+            <?php
+            echo Menu::widget([
+                'items' => $menuItems
+            ]);
+            ?>
         </nav>
         <div class="mt-1">
             <?php
