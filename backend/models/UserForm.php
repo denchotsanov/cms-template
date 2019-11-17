@@ -8,6 +8,7 @@
 
 namespace backend\models;
 
+use common\models\Profile;
 use Yii;
 use yii\base\Model;
 use yii\helpers\ArrayHelper;
@@ -69,6 +70,9 @@ class UserForm extends Model
         }
         $user->generateAuthKey();
         if ($user->save()) {
+            $profile = new Profile();
+            $profile->user_id = $user->id;
+            $profile->save();
             $this->sendEmail($user);
             return ArrayHelper::merge(['success' => true], $user);
         } else {

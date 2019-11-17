@@ -31,7 +31,7 @@ class UserController extends MainController
             'verbs' => [
                 'class' => VerbFilter::class,
                 'actions' => [
-                    '*'=> ['GET','POST'],
+                    '*' => ['GET', 'POST'],
                 ],
             ],
         ];
@@ -66,21 +66,21 @@ class UserController extends MainController
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
-
         $modelAssigment = $this->findAssigment($id);
-        $userModel= [
+
+        $userModel = [
             'id' => $model->id,
             'username' => $model->username,
-            'email'=> $model->email,
+            'email' => $model->email,
             'avatar' => $model->getUserAvatarUrl(),
-            'name' => $model->getProfile(),
+            'language' => '',
+            'name' => $model->getProfile()->exists() ? $model->getProfile()->name : '',
             'blockedUser' => ($model->status === User::STATUS_BANED || $model->status === User::STATUS_LOCKED),
-
         ];
         return $this->render('view', [
-            'model' =>$model,
-            'modelAssigment'=> $modelAssigment,
-            'user' =>$userModel,
+            'model' => $model,
+            'modelAssigment' => $modelAssigment,
+            'user' => $userModel,
         ]);
     }
 
@@ -97,7 +97,7 @@ class UserController extends MainController
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-        return $this->renderAjax('create',['model'=>$model]);
+        return $this->renderAjax('create', ['model' => $model]);
     }
 
     /**
@@ -116,25 +116,25 @@ class UserController extends MainController
         return $this->redirect(['index']);
     }
 
-    public function actionStatusUpdate(){
-
+    public function actionStatusUpdate()
+    {
         Yii::$app->response->format = Response::FORMAT_JSON;
         $model = new UserStatusUpdate();
-        $require = json_decode(Yii::$app->request->getRawBody(),true);
+        $require = json_decode(Yii::$app->request->getRawBody(), true);
         $model->load($require);
-        if ($model->update()){
-            return ['seccess'=>'OK'];
+        if ($model->update()) {
+            return ['seccess' => 'OK'];
         } else {
-            return ['seccess'=>'NOK'];
+            return ['seccess' => 'NOK'];
         }
-
     }
 
-    public function actionCreateUser(){
+    public function actionCreateUser()
+    {
         $model = new UserForm();
-        $require = json_decode(Yii::$app->request->getRawBody(),true);
+        $require = json_decode(Yii::$app->request->getRawBody(), true);
         $model->setAttributes($require);
-        if($model->validate()) {
+        if ($model->validate()) {
             return $model->createNewUser();
         } else {
             return $model;
@@ -157,7 +157,8 @@ class UserController extends MainController
         throw new NotFoundHttpException(Yii::t('backend', 'The requested page does not exist.'));
     }
 
-    public function findAssigment($id){
+    public function findAssigment($id)
+    {
         $userClass = Yii::$app->user->identityClass;
         if (($userModel = $userClass::findIdentity($id)) !== null) {
             return new AssignmentModel($userModel);

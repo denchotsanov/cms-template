@@ -73,7 +73,8 @@ class User extends ActiveRecord implements IdentityInterface
                     self::STATUS_PASSWORD_RECOVER,
                     self::STATUS_INACTIVE,
                     self::STATUS_DELETED
-                ]
+                ],
+
             ],
         ];
     }
