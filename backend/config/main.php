@@ -19,8 +19,7 @@ return [
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [
-        'rbac'=>[
-        ]
+        'rbac'=>[]
     ],
     'components' => [
         'request' => [
