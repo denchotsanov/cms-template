@@ -3,7 +3,7 @@ Installation
 
 ## Requirements
 
-The minimum requirement by this project template is that your Web server supports PHP 5.4.0.
+The minimum requirement by this project template is that your Web server supports PHP 5.6.0.
 
 ## Installing using Composer
 
@@ -41,7 +41,7 @@ the installed application. You only need to do these once for all.
    If you automate it with a script you can execute `init` in non-interactive mode.
 
    ```
-   /path/to/php-bin/php /path/to/yii-application/init --env=Development --overwrite=All
+   /path/to/php-bin/php /path/to/yii-application/init --env=Development --overwrite=All --delete=All
    ```
 
 2. Create a new database and adjust the `components['db']` configuration in `/path/to/yii-application/common/config/main-local.php` accordingly.
@@ -289,9 +289,9 @@ Install the application dependencies
 
 Initialize the application by running the `init` command within a container
 
-    docker-compose run --rm backend /app/init
+    docker-compose run --rm backend php /app/init
 
-Add a database service like and adjust the components['db'] configuration in `common/config/main-local.php` accordingly.
+Adjust the components['db'] configuration in `common/config/main-local.php` accordingly.
     
         'dsn' => 'mysql:host=mysql;dbname=yii2advanced',
         'username' => 'yii2advanced',
@@ -305,14 +305,14 @@ Add a database service like and adjust the components['db'] configuration in `co
 
 For more information about Docker setup please visit the [guide](http://www.yiiframework.com/doc-2.0/guide-index.html).
 
-Run the migrations
-
-    docker-compose run --rm backend yii migrate
-           
 Start the application
 
     docker-compose up -d
-    
+
+Run the migrations
+
+    docker-compose run --rm backend yii migrate          
+
 Access it in your browser by opening
 
 - frontend: http://127.0.0.1:20080
