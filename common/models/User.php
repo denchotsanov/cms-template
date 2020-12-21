@@ -231,6 +231,9 @@ class User extends ActiveRecord implements IdentityInterface
 
     }
 
+    /**
+     * Generates new token for email verification
+     */
     public function generateEmailVerificationToken()
     {
         $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
