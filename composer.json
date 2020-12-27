@@ -4,15 +4,14 @@
     "keywords": ["project template"],
     "type": "project",
     "license": "BSD-3-Clause",
-    "support": {},
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": ">=5.6.0",
-        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2": "^2.0.40",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "fxp/composer-asset-plugin": "^1.4",
-        "denchotsanov/yii2-admin-assets": "^0.0.6",
+        "fxp/composer-asset-plugin": "*",
+        "denchotsanov/yii2-admin-assets": ">0.0.6",
         "yii2mod/yii2-rbac": "*",
         "angular-ui/bootstrap": "dev-master"
     },
@@ -20,43 +19,24 @@
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-gii": "~2.1.0",
         "yiisoft/yii2-faker": "~2.0.0",
-        "codeception/base": "^2.4.0",
         "phpunit/phpunit": "~6.5.5",
+        "codeception/base": "^2.4.0",
         "codeception/verify": "~1.0.0",
+        "codeception/codeception": "^4.0",
+        "codeception/module-asserts": "^1.0",
+        "codeception/module-yii2": "^1.0",
+        "codeception/module-filesystem": "^1.0",
         "symfony/browser-kit": ">=2.7 <=4.2.4",
         "symfony/var-dumper": "*"
-    },
-    "scripts": {
-        "post-create-project-cmd": [
-            "yii\\composer\\Installer::postCreateProject"
-        ],
-        "post-install-cmd": [
-
-        ],
-        "post-update-cmd": [
-
-        ]
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "master-dev"
-        },
-        "yii\\composer\\Installer::postCreateProject": {
-            "setPermission": [
-                {
-                    "runtime": "0777",
-                    "web/assets": "0777",
-                    "web/uploads": "0777",
-                    "yii": "0755"
-                }
-            ]
-        }
     },
     "config":{
         "process-timeout": 1800,
         "fxp-asset.installer-paths":{
             "npm-asset-library": "node_modules",
             "bower-asset-library": "vendor/bower-asset"
+        },
+        "platform": {
+            "php": "7.0.18"
         }
     },
     "repositories": [
