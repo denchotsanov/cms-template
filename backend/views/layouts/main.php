@@ -6,7 +6,7 @@
 use yii\helpers\Html;
 use backend\assets\AppAsset;
 use backend\assets\AngularUIAsset;
-use denchotsanov\assets\AdminAsset;
+use denchotsanov\assets\assets\AdminAsset;
 
 AppAsset::register($this);
 AdminAsset::register($this);
