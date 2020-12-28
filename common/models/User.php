@@ -27,13 +27,11 @@ use yii\web\Response;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-
-    const STATUS_INACTIVE = 9;
-
     const STATUS_PENDING = 1;
     const STATUS_BANED = 2;
     const STATUS_LOCKED = 3;
     const STATUS_PASSWORD_RECOVER = 4;
+    const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
 
 
@@ -71,8 +69,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function rules()
     {
         return [
-            ['status', 'default', 'value' => self::STATUS_PENDING],
-
+            ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE,self::STATUS_INACTIVE, self::STATUS_DELETED]],
 
         ];
@@ -253,7 +250,7 @@ class User extends ActiveRecord implements IdentityInterface
      */
     public function getProfile()
     {
-        return $this->hasOne(Profile::className(), ['user_id' => 'id']);
+        return $this->hasOne(Profile::class, ['user_id' => 'id']);
     }
 
     /**
@@ -267,6 +264,7 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_BANED =>'Banned',
             self::STATUS_LOCKED =>'Locked',
             self::STATUS_PASSWORD_RECOVER =>'Password Recovery',
+            self::STATUS_INACTIVE => 'Inactive',
             self::STATUS_ACTIVE => 'Active',
         ];
     }
@@ -278,6 +276,7 @@ class User extends ActiveRecord implements IdentityInterface
             self::STATUS_BANED =>'<span class="label label-warning">Banned</span>',
             self::STATUS_LOCKED =>'<span class="label label-warning">Locked</span>',
             self::STATUS_PASSWORD_RECOVER =>'<span class="label label-warning">Password Recovery</span>',
+            self::STATUS_INACTIVE => '<span class="label label-warning">Inactive</span>',
             self::STATUS_ACTIVE => '<span class="label label-success">Active</span>',
         ];
     }
