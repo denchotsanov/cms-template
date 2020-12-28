@@ -20,8 +20,7 @@ class AppAsset extends AssetBundle
         'js/controllers/Users.js'
     ];
     public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap\BootstrapAsset',
-        'backend\assets\AngularAsset'
+        'backend\assets\AngularAsset',
+        'denchotsanov\assets\assets\AdminAsset'
     ];
 }
