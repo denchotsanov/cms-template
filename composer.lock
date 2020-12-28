@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0b9d3061ae1c8655f90e552a785765e5",
+    "content-hash": "c34836799d14d3f4e2cf6ea0e2f42b1f",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -169,7 +169,7 @@
             "version": "3.3.11",
             "source": {
                 "type": "git",
-                "url": "git@github.com:RobinHerbots/Inputmask.git",
+                "url": "https://github.com/RobinHerbots/Inputmask.git",
                 "reference": "5e670ad62f50c738388d4dcec78d2888505ad77b"
             },
             "dist": {
@@ -668,16 +668,16 @@
         },
         {
             "name": "denchotsanov/yii2-admin-assets",
-            "version": "v0.1.9",
+            "version": "0.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/denchotsanov/yii2-admin-assets.git",
-                "reference": "d12267fb8ba2db7fde748ee8737d0a6c86301cb2"
+                "reference": "7e9f6adf2afa252fafd0ebd986de2e53b7edac27"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/d12267fb8ba2db7fde748ee8737d0a6c86301cb2",
-                "reference": "d12267fb8ba2db7fde748ee8737d0a6c86301cb2",
+                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/7e9f6adf2afa252fafd0ebd986de2e53b7edac27",
+                "reference": "7e9f6adf2afa252fafd0ebd986de2e53b7edac27",
                 "shasum": ""
             },
             "require": {
@@ -704,7 +704,7 @@
                 }
             ],
             "description": "AdminLTE Admin panel theme asset bundle for Yii2 ",
-            "time": "2020-12-28T10:01:27+00:00"
+            "time": "2020-12-28T19:50:52+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -5459,7 +5459,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.6.0"
+        "php": ">=7.0.0"
     },
     "platform-dev": [],
     "platform-overrides": {
