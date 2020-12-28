@@ -22,7 +22,7 @@ return [
         ],
         'migrate' => [
             'class' => 'yii\console\controllers\MigrateController',
-            'migrationPath' => 'console\migrations', // disable non-namespaced migrations if app\migrations is listed below
+            'migrationPath' => 'console/migrations', // disable non-namespaced migrations if app\migrations is listed below
         ],
 
         'migrate-rbac' => [
@@ -42,7 +42,6 @@ return [
         ],
     ],
     'components' => [
-
         'log' => [
             'targets' => [
                 [
