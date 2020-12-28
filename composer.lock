@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "acc95159ae084d0648bd90bed56ace76",
+    "content-hash": "0b9d3061ae1c8655f90e552a785765e5",
     "packages": [
         {
             "name": "2amigos/yii2-arrayquery-component",
@@ -148,7 +148,7 @@
             "version": "v3.4.1",
             "source": {
                 "type": "git",
-                "url": "https://github.com/twbs/bootstrap.git",
+                "url": "git@github.com:twbs/bootstrap.git",
                 "reference": "68b0d231a13201eb14acd3dc84e51543d16e5f7e"
             },
             "dist": {
@@ -668,24 +668,24 @@
         },
         {
             "name": "denchotsanov/yii2-admin-assets",
-            "version": "v0.1.7",
+            "version": "v0.1.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/denchotsanov/yii2-admin-assets.git",
-                "reference": "135033e5562599af65e19ef57799e5561994521a"
+                "reference": "d12267fb8ba2db7fde748ee8737d0a6c86301cb2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/135033e5562599af65e19ef57799e5561994521a",
-                "reference": "135033e5562599af65e19ef57799e5561994521a",
+                "url": "https://api.github.com/repos/denchotsanov/yii2-admin-assets/zipball/d12267fb8ba2db7fde748ee8737d0a6c86301cb2",
+                "reference": "d12267fb8ba2db7fde748ee8737d0a6c86301cb2",
                 "shasum": ""
             },
             "require": {
-                "almasaeed2010/adminlte": "^3.0.0",
+                "almasaeed2010/adminlte": "^3.0.5",
                 "fxp/composer-asset-plugin": "^1.4.0",
                 "php": ">=5.6.0",
                 "yiisoft/yii2": "^2.0.28",
-                "yiisoft/yii2-bootstrap4": "^2.0.0"
+                "yiisoft/yii2-bootstrap4": "^2.0.9"
             },
             "type": "yii2-extension",
             "autoload": {
@@ -704,7 +704,7 @@
                 }
             ],
             "description": "AdminLTE Admin panel theme asset bundle for Yii2 ",
-            "time": "2019-11-03T20:03:00+00:00"
+            "time": "2020-12-28T10:01:27+00:00"
         },
         {
             "name": "doctrine/lexer",
