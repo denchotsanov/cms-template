@@ -14,13 +14,9 @@ class AppAsset extends AssetBundle
     public $css = [
         'css/site.css',
     ];
-    public $js = [
-        'js/app.js',
-        'js/controllers/Main.js',
-        'js/controllers/Users.js'
-    ];
+    public $js = [ ];
     public $depends = [
-        'backend\assets\AngularAsset',
+        'yii\web\YiiAsset',
         'denchotsanov\assets\assets\AdminAsset'
     ];
 }
