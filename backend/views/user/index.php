@@ -16,7 +16,9 @@ use yii\widgets\Pjax;
 /* @var $searchModel backend\models\UserSearch */
 /* @var $model \backend\models\User */
 /* @var $dataProvider yii\data\ActiveDataProvider */
+
 AjaxFormSubmissionAsset::register($this);
+
 $this->title = 'Users';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -24,67 +26,78 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="container-fluid">
         <div class="row">
             <div class="col-sm-9">
-                <div class="box box-primary">
-                    <div class="box-header with-border"></div>
-                    <div class="box-body table-responsive no-padding">
-                        <?php Pjax::begin(['id'=>'id-index-items']); ?>
-                        <?= GridView::widget([
-                            'dataProvider' => $dataProvider,
-                            'filterModel' => $searchModel,
-                            'layout' => "{items}\n{summary}\n{pager}",
-                            'columns' => [
-                                ['class' => 'yii\grid\SerialColumn'],
-                                [
-                                    'attribute' => 'username',
-                                    'filter' => true,
-                                    'format' => 'raw',
-                                    'value' => function ($model) {
-                                        if (isset($model->userProfile)) {
-                                            return $model->username . ' ( ' . $model->userProfile->fullname . ' )';
-                                        }
-
-                                        return $model->username;
-                                    },
-                                ],
-                                'email:email',
-                                [
-                                    'attribute' => 'status',
-                                    'filter' => User::getStatusList(),
-                                    'format' => 'raw',
-                                    'value' => function ($model) {
-                                        return $model->htmlStatusLabel;
-                                    },
-                                ],
-                                'created_at:date',
-                                'updated_at:date',
-                                [
-                                    'class' => 'yii\grid\ActionColumn',
-                                    'template' => '{update}{delete}',
-                                    'buttons' => [
-                                        'update' => function ($url, $model, $key) {
-                                            return Html::a('Update', $url);
+                <div class="card card-outline card-primary">
+                    <div class="card-body table-responsive no-padding">
+                        <div class="dataTables_wrapper dt-bootstrap4">
+                            <?php Pjax::begin(['id' => 'id-index-items']); ?>
+                            <?php echo GridView::widget([
+                                'dataProvider' => $dataProvider,
+                                'filterModel' => $searchModel,
+                                'layout' => "\n{items}\n{summary}\n{pager}",
+                                'columns' => [
+                                    ['class' => 'yii\grid\SerialColumn'],
+                                    [
+                                        'attribute' => 'username',
+                                        'filter' => true,
+                                        'format' => 'raw',
+                                        'value' => function ($model) {
+                                            if (isset($model->userProfile)) {
+                                                return $model->username . ' ( ' . $model->userProfile->fullname . ' )';
+                                            }
+                                            return '<b>' . Html::a($model->username, false,
+                                                    [
+                                                        'title' => Yii::t('backend', 'Edit User'),
+                                                        'data' => [
+                                                            'url-submission' => Url::to([
+                                                                'update',
+                                                                'id' => $model->id
+                                                            ], true)
+                                                        ],
+                                                        'class' => 'showModalButton',
+                                                        'style' => 'cursor:pointer;'
+                                                    ]).'</b>';
                                         },
-                                        'delete' => function ($url, $model, $key) {
-                                            return Html::a('Delete', $url);
-                                        }
                                     ],
+                                    'email:email',
+                                    [
+                                        'attribute' => 'status',
+                                        'filter' => User::getStatusList(),
+                                        'format' => 'raw',
+                                        'value' => function ($model) {
+                                            return $model->htmlStatusLabel;
+                                        },
+                                    ],
+                                    'created_at:date',
+                                    [
+                                        'class' => 'yii\grid\ActionColumn',
+                                        'template' => '{update}{delete}',
+                                        'buttons' => [
+                                            'update' => function ($url, $model, $key) {
+                                                return Html::a('Update', $url);
+                                            },
+                                            'delete' => function ($url, $model, $key) {
+                                                return Html::a('Delete', $url);
+                                            }
+                                        ],
 
+                                    ],
                                 ],
-                            ],
-                        ]); ?>
-                        <?php Pjax::end(); ?>
+                            ]); ?>
+                            <?php Pjax::end(); ?>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="col-sm-3">
-                <div class="box box-default">
-                    <div class="box-body">
+                <div class="card card-outline card-secondary">
+                    <div class="card-body">
                         <?php echo Html::a('<i class="fa fa-plus"></i> Create', false, [
-                            'data'  => [
+                            'data' => [
                                 'url-submission' => Url::to(['user/create'])
                             ],
                             'title' => 'Creating New User',
-                            'class' => 'showModalButton btn btn-app btn-flat']); ?>
+                            'class' => 'showModalButton btn btn-app btn-flat'
+                        ]); ?>
                     </div>
                 </div>
             </div>

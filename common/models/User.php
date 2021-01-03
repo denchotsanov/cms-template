@@ -261,7 +261,7 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @return array
      */
-    public function getStatusList()
+    public static function getStatusList(): array
     {
         return [
             self::STATUS_DELETED => 'Denied',

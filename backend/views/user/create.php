@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="error-summary"></div>
     <?php echo $form->field($model, 'email')->textInput(); ?>
     <?php echo $form->field($model, 'password')->passwordInput(); ?>
-    <?php echo $form->field($model, 'status')->dropDownList((new User())->getStatusList()); ?>
+    <?php echo $form->field($model, 'status')->dropDownList(User::getStatusList()); ?>
 </div>
 <?php if (Yii::$app->request->isAjax): ?>
     <div class="modal-footer">
