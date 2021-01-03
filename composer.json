@@ -12,8 +12,7 @@
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "fxp/composer-asset-plugin": "*",
         "denchotsanov/yii2-admin-assets": "0.2.0",
-        "yii2mod/yii2-rbac": "*",
-        "angular-ui/bootstrap": "dev-master"
+        "yii2mod/yii2-rbac": "*"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",

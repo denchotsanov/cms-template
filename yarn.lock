@@ -109,10 +109,6 @@ angular-touch@^1.7.7:
   resolved "https://registry.yarnpkg.com/angular-touch/-/angular-touch-1.7.7.tgz#82d3185352b4e6b3761d3442c952e64017d0a11a"
   integrity sha512-Adanic7xzlZMVoi2hh8kDerGg+qX0VounC5z438O6rNcH7Eg3h3nNXAIXVu5GvZs2mEdNvE/Qru223N6bN93XA==
 
-angular-ui-bootstrap@angular-ui/bootstrap:
-  version "2.5.4"
-  resolved "https://codeload.github.com/angular-ui/bootstrap/tar.gz/baf0a567f9f4641848a9a4699695f9cde5f28f70"
-
 angular@^1.7.7:
   version "1.7.7"
   resolved "https://registry.yarnpkg.com/angular/-/angular-1.7.7.tgz#26bd87693deadcbd5944610a7a0463fc79a18803"
