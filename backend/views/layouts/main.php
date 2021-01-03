@@ -1,10 +1,18 @@
 <?php
+/*
+ * @author Dencho Tsanov <dencho@tsanov.eu>
+ * @licence MIT License
+ * @copyright Copyright (c) 2021. Dencho Tsanov. All rights reserved.
+ */
 
-/* @var $this \yii\web\View */
+/* @var $this View */
+
 /* @var $content string */
 
+use yii\bootstrap4\Modal;
 use yii\helpers\Html;
 use backend\assets\AppAsset;
+use yii\web\View;
 
 AppAsset::register($this);
 ?>
@@ -32,6 +40,23 @@ AppAsset::register($this);
     <?= $this->render('_contentFooter'); ?>
     <?= $this->render('_controlSidebar'); ?>
 </div>
+<?php Modal::begin([
+    'headerOptions' => ['id' => 'modalHeader'],
+    'id' => 'modal',
+    'size' => 'modal-lg',
+    'clientOptions' => [
+        'backdrop' => 'static',
+        'keyboard' => true
+    ]
+]);
+echo "<div id='modal-content-details'>";
+echo "    <div style='text-align:center'>";
+echo "        <i class='fa fa-refresh fa-spin fa-1x fa-fw'></i>" . Yii::t('app',
+        'Loading Data...');
+echo "    </div>";
+echo "</div>";
+Modal::end();
+?>
 <?php $this->endBody() ?>
 </body>
 </html>
