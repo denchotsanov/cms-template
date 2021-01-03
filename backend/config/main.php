@@ -2,7 +2,8 @@
 
 use yii\web\Request;
 
-$baseUrl = str_replace('/backend/web', '', (new Request)->getBaseUrl()) . '/admin';
+//$baseUrl = str_replace('/backend/web', '', (new Request)->getBaseUrl()) . '/admin';
+$baseUrl = str_replace('/backend/web', '', (new Request)->getBaseUrl()) ;
 
 $params = array_merge(
     require __DIR__ . '/../../common/config/params.php',
