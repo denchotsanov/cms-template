@@ -1,13 +1,18 @@
 <?php
+/*
+ * @author Dencho Tsanov <dencho@tsanov.eu>
+ * @licence MIT License
+ * @copyright Copyright (c) 2021. Dencho Tsanov. All rights reserved.
+ */
+
 namespace common\models;
 
 use Yii;
-use yii\base\Model;
-use yii\base\NotSupportedException;
+use yii\base\Exception;
 use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveQuery;
 use yii\db\ActiveRecord;
 use yii\web\IdentityInterface;
-use yii\web\Response;
 
 /**
  * User model
@@ -200,7 +205,7 @@ class User extends ActiveRecord implements IdentityInterface
      * Generates password hash from password and sets it to the model
      *
      * @param string $password
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
     public function setPassword($password)
     {
@@ -209,7 +214,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Generates "remember me" authentication key
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
     public function generateAuthKey()
     {
@@ -218,7 +223,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      * Generates new password reset token
-     * @throws \yii\base\Exception
+     * @throws Exception
      */
     public function generatePasswordResetToken()
     {
@@ -246,7 +251,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     /**
      *
-     * @return \yii\db\ActiveQuery
+     * @return ActiveQuery
      */
     public function getProfile()
     {
@@ -317,6 +322,6 @@ class User extends ActiveRecord implements IdentityInterface
 //            return Yii::$app->request->baseUrl .'/uploads/avatars/'.$this->avatar;
 //        }
 
-        return Yii::$app->request->baseUrl .'/img/avatar5.png';
+        return '@web/img/user2-160x160.jpg';
     }
 }
