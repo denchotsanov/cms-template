@@ -12,22 +12,22 @@
         "yiisoft/yii2-bootstrap4": "^2.0.6",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
         "fxp/composer-asset-plugin": "^1.4",
-        "denchotsanov/yii2-user-rbac": "*",
-        "denchotsanov/yii2-admin-assets": "^0.1.1",
-        "npm-asset/ui-bootstrap4": "^3.0.0",
-        "bower-asset/angularjs": "^1.7.7",
-        "bower-asset/angular": "^1.7.7",
+        "denchotsanov/yii2-user-rbac": "^v0.3.7",
+        "denchotsanov/yii2-admin-assets": "^0.1.7",
+        "npm-asset/ui-bootstrap4": "^3.0.6",
+        "bower-asset/angularjs": "^1.7.8",
+        "bower-asset/angular": "^1.7.8",
         "bower-asset/angular-material": "^1.1.12",
         "bower-asset/angular-aria": "^1.7.7",
         "bower-asset/angular-animate": "^1.7.7",
         "bower-asset/angular-messages": "^1.7.7",
         "bower-asset/angular-sanitize": "^1.7.7",
-        "bower-asset/flag-icon-css": "*"
+        "bower-asset/flag-icon-css": "^3.4.4"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
         "yiisoft/yii2-gii": "~2.1.0",
-        "symfony/var-dumper": "*"
+        "symfony/var-dumper": "^v4.3.6"
     },
     "scripts": {
         "post-create-project-cmd": [
@@ -38,7 +38,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "master-dev"
+            "dev-master": "2.0-dev"
         },
         "yii\\composer\\Installer::postCreateProject": {
             "setPermission": [
