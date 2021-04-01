@@ -10,9 +10,9 @@
         "yiisoft/yii2": "^2.0.40",
         "yiisoft/yii2-bootstrap": "~2.0.0",
         "yiisoft/yii2-swiftmailer": "~2.0.0 || ~2.1.0",
-        "fxp/composer-asset-plugin": "*",
+        "fxp/composer-asset-plugin": "^v1.4.6",
         "denchotsanov/yii2-admin-assets": "0.2.0",
-        "yii2mod/yii2-rbac": "*"
+        "yii2mod/yii2-rbac": "^2.3"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
